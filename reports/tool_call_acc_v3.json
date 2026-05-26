@@ -1,0 +1,1087 @@
+{
+  "version": "v3",
+  "n": 84,
+  "overall": 0.2976190476190476,
+  "by_category": {
+    "out_of_context": 0.0,
+    "comparative": 1.0,
+    "attribution": 1.0,
+    "numerical": 1.0,
+    "methodological": 1.0,
+    "definitional": 1.0
+  },
+  "rows": [
+    {
+      "i": 0,
+      "question": "What is HyDE (Hypothetical Document Embeddings) in the context of dense retrieval?",
+      "category": "definitional",
+      "expected": [
+        "rag_retrieve"
+      ],
+      "actual": [
+        "rag_retrieve"
+      ],
+      "score": 1.0,
+      "answer": "## What is HyDE (Hypothetical Document Embeddings) in Dense Retrieval?\n\nHyDE, or Hypothetical Document Embeddings, is a novel approach to dense retrieval that reframes the retrieval task into two distinct components: generative modeling and document-document similarity search (Precise Zero-Shot Dense Retrieval without Relevance Labels, 2022).\n\n### Core Idea\n\n- **Generative Step:** Given a query, a"
+    },
+    {
+      "i": 1,
+      "question": "What does the term 'faithfulness' mean as a RAGAS metric?",
+      "category": "definitional",
+      "expected": [
+        "rag_retrieve"
+      ],
+      "actual": [
+        "rag_retrieve"
+      ],
+      "score": 1.0,
+      "answer": "## Meaning of 'Faithfulness' as a RAGAS Metric\n\nIn the context of RAGAS (Automated Evaluation of Retrieval Augmented Generation), **faithfulness** refers to the degree to which the generated answers accurately reflect the original source material or context. It measures how well the content produced by a model corresponds to the factual information present in the retrieved documents or context pas"
+    },
+    {
+      "i": 2,
+      "question": "Define 'Retrieval-Augmented Generation' (RAG) and identify its two core components.",
+      "category": "definitional",
+      "expected": [
+        "rag_retrieve"
+      ],
+      "actual": [
+        "rag_retrieve"
+      ],
+      "score": 1.0,
+      "answer": "## Definition of Retrieval-Augmented Generation (RAG)\n\nRetrieval-Augmented Generation (RAG) is a hybrid architecture that combines a large language model with an external retrieval mechanism. This design enables the system to fetch relevant documents or passages based on user queries and then generate responses grounded in this retrieved content. By doing so, RAG improves performance on knowledge-"
+    },
+    {
+      "i": 3,
+      "question": "What is a cross-encoder reranker, and why is it used after a bi-encoder retrieval stage?",
+      "category": "definitional",
+      "expected": [
+        "rag_retrieve"
+      ],
+      "actual": [
+        "rag_retrieve",
+        "rag_retrieve",
+        "rag_retrieve"
+      ],
+      "score": 1.0,
+      "answer": "## What is a Cross-Encoder Reranker?\n\nA **cross-encoder reranker** is a model that evaluates the relevance of retrieved documents by jointly considering the entire query-document pair together. Unlike bi-encoders, which encode queries and documents independently, cross-encoders process the combined input, allowing them to capture detailed interactions and contextual dependencies between the query "
+    },
+    {
+      "i": 4,
+      "question": "What is the ReAct framework for LLM agents?",
+      "category": "definitional",
+      "expected": [
+        "rag_retrieve"
+      ],
+      "actual": [
+        "rag_retrieve"
+      ],
+      "score": 1.0,
+      "answer": "## What is the ReAct Framework for LLM Agents?\n\nThe **ReAct framework** is a method designed to enhance large language models (LLMs) by integrating **reasoning** and **acting** capabilities within a single interactive process. It aims to improve task performance by enabling LLMs to interleave cognitive reasoning steps with concrete actions in an environment, rather than treating these as separate "
+    },
+    {
+      "i": 5,
+      "question": "How does Self-RAG differ from standard RAG?",
+      "category": "comparative",
+      "expected": [
+        "rag_retrieve"
+      ],
+      "actual": [
+        "rag_retrieve",
+        "rag_retrieve",
+        "rag_retrieve"
+      ],
+      "score": 1.0,
+      "answer": "## Differences Between Self-RAG and Standard RAG\n\n### 1. Retrieval Mechanism\n- **Standard RAG** uses a fixed number of retrieved documents for generation, which can lead to missing crucial information if the fixed set is insufficient or not fully relevant.\n- **Self-RAG** incorporates adaptive retrieval mechanisms that dynamically adjust the number and selection of documents based on the context an"
+    },
+    {
+      "i": 6,
+      "question": "Compare RAGAS and RAGChecker — what does each evaluate that the other doesn't, or differently?",
+      "category": "comparative",
+      "expected": [
+        "rag_retrieve"
+      ],
+      "actual": [
+        "rag_retrieve",
+        "rag_retrieve",
+        "rag_retrieve"
+      ],
+      "score": 1.0,
+      "answer": "## Comparison of RAGAS and RAGChecker\n\n### What RAGAS Evaluates\n- **Reference-free evaluation framework** specifically designed for Retrieval-Augmented Generation (RAG) systems.\n- Evaluates multiple dimensions including:\n  - **Faithfulness** of the generated answers.\n  - **Answer relevance** to the posed question.\n  - **Context relevance** of the retrieved documents used for generation.\n- Does not"
+    },
+    {
+      "i": 7,
+      "question": "What is the main difference between sparse retrieval (BM25) and dense retrieval (bi-encoders)?",
+      "category": "comparative",
+      "expected": [
+        "rag_retrieve"
+      ],
+      "actual": [
+        "rag_retrieve",
+        "rag_retrieve",
+        "rag_retrieve"
+      ],
+      "score": 1.0,
+      "answer": "## Main Difference Between Sparse Retrieval (BM25) and Dense Retrieval (Bi-Encoders)\n\nThe primary difference lies in how they represent and score the relevance between queries and documents:\n\n### Sparse Retrieval (BM25)\n- **Representation:** BM25 is a statistical model based on term frequency and document length. It treats documents and queries as sparse vectors of terms.\n- **Scoring:** It uses pr"
+    },
+    {
+      "i": 8,
+      "question": "How do GraphRAG and standard RAG differ in how they organize the corpus?",
+      "category": "comparative",
+      "expected": [
+        "rag_retrieve"
+      ],
+      "actual": [
+        "rag_retrieve",
+        "rag_retrieve",
+        "rag_retrieve"
+      ],
+      "score": 1.0,
+      "answer": "## Differences in Corpus Organization Between GraphRAG and Standard RAG\n\n### Standard RAG Corpus Organization\n- **Vector Space Indexing:** Standard Retrieval-Augmented Generation (RAG) organizes the corpus by embedding textual data into a vector space based on semantic similarity.\n- **Fixed Number of Records:** It retrieves a fixed number of relevant records or passages that are closest in vector "
+    },
+    {
+      "i": 9,
+      "question": "Compare LangGraph and CrewAI as agent frameworks.",
+      "category": "comparative",
+      "expected": [
+        "rag_retrieve"
+      ],
+      "actual": [
+        "rag_retrieve",
+        "rag_retrieve",
+        "rag_retrieve"
+      ],
+      "score": 1.0,
+      "answer": "## Comparison of LangGraph and CrewAI as Agent Frameworks\n\nLangGraph and CrewAI are two distinct frameworks designed to enhance large language models' (LLMs) ability to understand and process graph-structured data. Both leverage LLMs but differ significantly in their approaches to integrating and representing graph information.\n\n### LangGraph\n\n- **Core Approach:** LangGraph focuses on verbalizing "
+    },
+    {
+      "i": 10,
+      "question": "Walk through the steps of the ReAct loop as proposed in the original paper.",
+      "category": "methodological",
+      "expected": [
+        "rag_retrieve"
+      ],
+      "actual": [
+        "rag_retrieve"
+      ],
+      "score": 1.0,
+      "answer": "## Steps of the ReAct Loop\n\nThe ReAct loop, as proposed in the original paper, is a framework that synergizes reasoning and acting within language models by interleaving these two processes. This approach enables the model to think and act simultaneously, improving task performance and adaptability.\n\n### 1. Task Definition\nThe process begins with a clear task definition. The model is prompted with"
+    },
+    {
+      "i": 11,
+      "question": "How does Hypothetical Document Embeddings (HyDE) generate the search vector at query time?",
+      "category": "methodological",
+      "expected": [
+        "rag_retrieve"
+      ],
+      "actual": [
+        "rag_retrieve",
+        "rag_retrieve",
+        "rag_retrieve"
+      ],
+      "score": 1.0,
+      "answer": "## How HyDE Generates the Search Vector at Query Time\n\nHypothetical Document Embeddings (HyDE) creates the search vector through a two-step process involving natural language generation and encoding:\n\n### 1. Hypothetical Document Generation\n- Given a query, HyDE instructs a generative language model to **\"write a document that answers the question.\"** This produces a **hypothetical document** that"
+    },
+    {
+      "i": 12,
+      "question": "Describe the chunking pipeline typically used for academic-paper RAG: what are the key choices?",
+      "category": "methodological",
+      "expected": [
+        "rag_retrieve"
+      ],
+      "actual": [
+        "rag_retrieve",
+        "rag_retrieve",
+        "rag_retrieve"
+      ],
+      "score": 1.0,
+      "answer": "## Chunking Pipeline in Academic-Paper RAG Systems: Key Choices\n\nRetrieval-Augmented Generation (RAG) systems for academic papers rely heavily on an effective chunking pipeline to split documents into manageable text segments (\"chunks\") that can be retrieved and processed by large language models (LLMs). The chunking strategy directly influences retrieval quality, response accuracy, and computatio"
+    },
+    {
+      "i": 13,
+      "question": "How does sentence-transformers' bi-encoder differ from a cross-encoder in inference cost?",
+      "category": "methodological",
+      "expected": [
+        "rag_retrieve"
+      ],
+      "actual": [
+        "rag_retrieve",
+        "rag_retrieve",
+        "rag_retrieve"
+      ],
+      "score": 1.0,
+      "answer": "## Differences in Inference Cost Between Sentence-Transformers' Bi-Encoder and Cross-Encoder\n\n### Bi-Encoder Inference Cost Characteristics\n- **Separate Encoding:** Bi-encoders use two independent encoders for the input query and the candidate documents or outputs. This separation allows the document embeddings to be precomputed and cached offline, eliminating the need to re-encode documents durin"
+    },
+    {
+      "i": 14,
+      "question": "What does 'context precision' specifically measure and how is it computed in RAGAS?",
+      "category": "methodological",
+      "expected": [
+        "rag_retrieve"
+      ],
+      "actual": [
+        "rag_retrieve",
+        "rag_retrieve",
+        "rag_retrieve"
+      ],
+      "score": 1.0,
+      "answer": "## What Does Context Precision Measure in RAGAS?\n\nContext precision in RAGAS specifically measures the focus and relevance of the retrieved context in Retrieval-Augmented Generation (RAG) systems. It evaluates whether the pieces of information retrieved and provided as context to the generation model are sufficiently relevant to the question being asked. Essentially, it quantifies how well the ret"
+    },
+    {
+      "i": 15,
+      "question": "Which paper introduced the original RAG architecture for open-domain question answering?",
+      "category": "attribution",
+      "expected": [
+        "rag_retrieve"
+      ],
+      "actual": [
+        "rag_retrieve"
+      ],
+      "score": 1.0,
+      "answer": "The original RAG (Retrieval-Augmented Generation) architecture for open-domain question answering was introduced in the paper titled **\"Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks\" (2020)**. This paper presents RAG as a novel approach that integrates retrieval mechanisms directly into the generation process for answering questions.\n\n### Key Contributions of the Paper:\n- **Arch"
+    },
+    {
+      "i": 16,
+      "question": "Who proposed Self-RAG and in which year?",
+      "category": "attribution",
+      "expected": [
+        "rag_retrieve"
+      ],
+      "actual": [
+        "rag_retrieve"
+      ],
+      "score": 1.0,
+      "answer": "Self-RAG was proposed by Asai et al. in 2024 (Self-adaptive Multimodal Retrieval-Augmented Generation, 2024). \n\n## Sources\n- Self-adaptive Multimodal Retrieval-Augmented Generation, 2024  \n- Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection, 2023"
+    },
+    {
+      "i": 17,
+      "question": "Which paper proposed the ReAct framework for LLM agents?",
+      "category": "attribution",
+      "expected": [
+        "rag_retrieve"
+      ],
+      "actual": [
+        "rag_retrieve"
+      ],
+      "score": 1.0,
+      "answer": "The paper that proposed the ReAct framework for large language model (LLM) agents is titled **\"ReAct: Synergizing Reasoning and Acting in Language Models\" (2022)**. This work introduces the ReAct framework, which integrates interleaved reasoning and action execution within LLMs to enhance decision-making capabilities. Unlike other approaches that rely heavily on expensive human feedback for policy"
+    },
+    {
+      "i": 18,
+      "question": "Who introduced the BGE family of embedding models?",
+      "category": "attribution",
+      "expected": [
+        "rag_retrieve"
+      ],
+      "actual": [
+        "rag_retrieve"
+      ],
+      "score": 1.0,
+      "answer": "The BGE family of embedding models was introduced in the work titled **\"C-Pack: Packed Resources For General Chinese Embeddings\" (2023)**. This paper presents BGE as a set of BERT-like embedding models designed with a three-stage training process to enhance performance. The models come in three sizes—large (326M parameters), base (102M), and small (24M)—offering flexibility to balance running effi"
+    },
+    {
+      "i": 19,
+      "question": "Which paper proposed the RAGAS evaluation framework?",
+      "category": "attribution",
+      "expected": [
+        "rag_retrieve"
+      ],
+      "actual": [
+        "rag_retrieve"
+      ],
+      "score": 1.0,
+      "answer": "The paper that proposed the RAGAS evaluation framework is titled **\"Ragas: Automated Evaluation of Retrieval Augmented Generation\" (2023)**. This framework is designed for the automated assessment of retrieval augmented generation systems, particularly addressing challenges when reference answers are unavailable by estimating proxies for correctness. It aims to improve evaluation strategies for qu"
+    },
+    {
+      "i": 20,
+      "question": "What benchmark dataset and approximate scale does HotpotQA cover for multi-hop QA evaluation?",
+      "category": "numerical",
+      "expected": [
+        "rag_retrieve"
+      ],
+      "actual": [
+        "rag_retrieve"
+      ],
+      "score": 1.0,
+      "answer": "## HotpotQA Benchmark Dataset for Multi-hop QA Evaluation\n\nHotpotQA is a prominent dataset used for evaluating multi-hop question answering (QA) systems. It is part of a collection of multi-hop QA datasets that collectively contain approximately 125,000 training instances. HotpotQA is evaluated alongside other multi-hop QA datasets such as 2WikiMultihopQA and MuSiQue, providing a diverse benchmark"
+    },
+    {
+      "i": 21,
+      "question": "What is the typical embedding dimensionality of OpenAI's text-embedding-3-small model?",
+      "category": "numerical",
+      "expected": [
+        "rag_retrieve"
+      ],
+      "actual": [
+        "rag_retrieve"
+      ],
+      "score": 1.0,
+      "answer": "## Typical Embedding Dimensionality of OpenAI's text-embedding-3-small Model\n\nBased on the provided research notes, the exact embedding dimensionality of OpenAI's **text-embedding-3-small** model is **not specified**. There is no direct information available about its embedding size in the referenced materials (Query-Centric Graph Retrieval Augmented Generation, 2025).\n\n### Related Context on Embe"
+    },
+    {
+      "i": 22,
+      "question": "Around what context length does the original ReAct paper operate, and how many ReAct steps did the authors typically allow per question on HotpotQA?",
+      "category": "numerical",
+      "expected": [
+        "rag_retrieve"
+      ],
+      "actual": [
+        "rag_retrieve"
+      ],
+      "score": 1.0,
+      "answer": "The original ReAct paper operates with a context length of 6 when working on HotpotQA. Additionally, the authors typically allowed 3 ReAct steps per question on this dataset (ReAct: Synergizing Reasoning and Acting in Language Models, 2022).\n\n## Sources\n- ReAct: Synergizing Reasoning and Acting in Language Models, 2022"
+    },
+    {
+      "i": 23,
+      "question": "What scoring scale does the standard RAGAS faithfulness metric output?",
+      "category": "numerical",
+      "expected": [
+        "rag_retrieve"
+      ],
+      "actual": [
+        "rag_retrieve"
+      ],
+      "score": 1.0,
+      "answer": "The standard RAGAS faithfulness metric outputs a score on a scale where the reported value is 0.95. This indicates that the faithfulness score is likely represented as a decimal between 0 and 1, with higher values indicating greater faithfulness. \n\nFor context, RAGAS also provides scores for answer relevance and contextual relevance, which are 0.78 and 0.70 respectively, further supporting that th"
+    },
+    {
+      "i": 24,
+      "question": "How many parameters does the BGE-reranker-base model have, approximately?",
+      "category": "numerical",
+      "expected": [
+        "rag_retrieve"
+      ],
+      "actual": [
+        "rag_retrieve"
+      ],
+      "score": 1.0,
+      "answer": "The BGE-reranker-base model has approximately 102 million parameters (C-Pack: Packed Resources For General Chinese Embeddings, 2023).\n\n## Sources\n- C-Pack: Packed Resources For General Chinese Embeddings, 2023"
+    },
+    {
+      "i": 25,
+      "question": "What is the current price of OpenAI's gpt-4.1-mini per million input tokens as of today?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 26,
+      "question": "What are the cabinet appointments in the current Greek government?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 27,
+      "question": "Which English Premier League team had the highest possession percentage last weekend?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 28,
+      "question": "Walk me through the proof of Cantor's diagonal argument.",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 29,
+      "question": "What hyperparameters does the latest internal Google Search ranking model use?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 30,
+      "question": "What is the maximum payload capacity of the DJI Matrice 350 RTK drone?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 31,
+      "question": "How does a quadrotor UAV maintain attitude stability using a PID controller?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 32,
+      "question": "What frequency bands (MHz) are used for UAV telemetry links under EASA regulations?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 33,
+      "question": "How does GPS-denied navigation work for military drones using inertial measurement units?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 34,
+      "question": "What is the BVLOS (Beyond Visual Line of Sight) regulatory framework for commercial drones in the EU?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 35,
+      "question": "How does LiDAR-based SLAM work for autonomous UAV mapping?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 36,
+      "question": "What is the difference between fixed-wing and multirotor UAVs for agricultural spraying applications?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 37,
+      "question": "What were the main policy outcomes of the G7 summit in June 2024?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 38,
+      "question": "Who is the current NATO Secretary General and what are their stated priorities for 2025?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 39,
+      "question": "What sanctions did the EU impose on Russia following the 2022 invasion of Ukraine, and how have they evolved?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 40,
+      "question": "How does the US Senate filibuster procedurally work, and what is cloture?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 41,
+      "question": "What is the Greek government's current fiscal consolidation plan approved by the European Commission?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 42,
+      "question": "Which political party won the most seats in the 2024 European Parliament elections?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 43,
+      "question": "How does gradient boosting differ from AdaBoost in terms of residual fitting?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 44,
+      "question": "What is the VC dimension of a linear classifier in d dimensions?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 45,
+      "question": "How does XGBoost handle missing values during tree construction?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 46,
+      "question": "Explain the kernel trick in Support Vector Machines and give an example kernel function.",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 47,
+      "question": "How does the DBSCAN clustering algorithm determine core points and noise?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 48,
+      "question": "What is Principal Component Analysis and how does it minimize reconstruction error?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 49,
+      "question": "How does a random forest compute feature importance using Gini impurity?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 50,
+      "question": "What is the difference between a Variational Autoencoder (VAE) and a Generative Adversarial Network (GAN)?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 51,
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0
+    },
+    {
+      "i": 52,
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0
+    },
+    {
+      "i": 53,
+      "question": "What is the Segment Anything Model (SAM) and how does it perform zero-shot segmentation?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [
+        "rag_retrieve",
+        "rag_retrieve",
+        "rag_retrieve"
+      ],
+      "score": 0.0,
+      "answer": "## What is the Segment Anything Model (SAM)?\n\nThe Segment Anything Model (SAM) is a state-of-the-art model designed specifically for zero-shot segmentation tasks. It is built to perform segmentation without requiring any task-specific training data, which means it can generalize to new segmentation challenges without retraining. SAM integrates vision and language models, enabling it to process and"
+    },
+    {
+      "i": 54,
+      "question": "How does optical flow estimation work in video understanding, and what is the Lucas-Kanade method?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [
+        "rag_retrieve",
+        "rag_retrieve",
+        "rag_retrieve"
+      ],
+      "score": 0.0,
+      "answer": "## Optical Flow Estimation in Video Understanding\n\nOptical flow estimation is a fundamental technique in video understanding that involves analyzing the motion between consecutive video frames. By estimating how pixels move from one frame to the next, optical flow helps in understanding object movement and the dynamics of the scene. This information is crucial for various applications such as moti"
+    },
+    {
+      "i": 55,
+      "question": "How is the Black-Scholes option pricing formula derived and what are its key assumptions?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 56,
+      "question": "What is quantitative easing and how does increasing the money supply affect inflation?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 57,
+      "question": "What is the Sharpe ratio and how is it used to compare portfolio risk-adjusted returns?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 58,
+      "question": "What is the mechanism by which mRNA vaccines like Pfizer's BNT162b2 produce an immune response?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 59,
+      "question": "How does CRISPR-Cas9 gene editing create a double-strand break at a target locus?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 60,
+      "question": "What is the pathophysiology of Type 2 diabetes and how does insulin resistance develop?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 61,
+      "question": "How does AlphaFold 2 predict protein structure from amino acid sequences?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 62,
+      "question": "How does a buffer overflow exploit work and what mitigations does ASLR provide?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 63,
+      "question": "What is a SQL injection attack and how does parameterized query binding prevent it?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 64,
+      "question": "How does the Diffie-Hellman key exchange protocol establish a shared secret over an insecure channel?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 65,
+      "question": "How does Kubernetes Horizontal Pod Autoscaler decide when to scale a deployment?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 66,
+      "question": "What is the difference between TCP and UDP, and when would you prefer UDP?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 67,
+      "question": "How does Proof of Stake consensus differ from Proof of Work in blockchain networks?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 68,
+      "question": "What is a B-tree index and why is it preferred over a hash index for range queries in databases?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 69,
+      "question": "How does TLS 1.3 reduce handshake latency compared to TLS 1.2?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 70,
+      "question": "What is the difference between ARM and x86 instruction set architectures in terms of RISC vs CISC design?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 71,
+      "question": "How does the Whisper speech recognition model handle multilingual transcription?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [
+        "rag_retrieve",
+        "rag_retrieve",
+        "rag_retrieve"
+      ],
+      "score": 0.0,
+      "answer": "## How Whisper Handles Multilingual Transcription\n\nThe Whisper speech recognition model achieves multilingual transcription by leveraging several key strategies and design choices:\n\n### 1. Multilingual Pretraining Data\nWhisper is pretrained on a diverse multilingual dataset, which enables it to learn representations across multiple languages. This extensive multilingual pretraining enhances its ab"
+    },
+    {
+      "i": 72,
+      "question": "What is the WMT evaluation benchmark for machine translation and which metrics does it use?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [
+        "rag_retrieve"
+      ],
+      "score": 0.0,
+      "answer": "## What is the WMT Evaluation Benchmark for Machine Translation?\n\nThe WMT (Workshop on Machine Translation) evaluation benchmark is a widely recognized standard for assessing the quality of machine translation systems. It serves as a platform to compare different machine translation models by providing a comprehensive and systematic evaluation framework. The benchmark covers multiple language pair"
+    },
+    {
+      "i": 73,
+      "question": "How does the Word2Vec skip-gram model learn word embeddings using negative sampling?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [
+        "rag_retrieve"
+      ],
+      "score": 0.0,
+      "answer": "## How the Word2Vec Skip-gram Model Learns Word Embeddings Using Negative Sampling\n\nThe Word2Vec skip-gram model is designed to learn word embeddings by predicting the context words surrounding a given target word. The core idea is to maximize the probability of actual context words appearing near the target word while minimizing the probability of unrelated words.\n\n### Skip-gram Model Overview\n- "
+    },
+    {
+      "i": 74,
+      "question": "What is the BLEU score metric and why is it commonly criticized for machine translation evaluation?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [
+        "rag_retrieve"
+      ],
+      "score": 0.0,
+      "answer": "## What is the BLEU Score Metric?\n\nThe BLEU (Bilingual Evaluation Understudy) score is a widely used metric for evaluating the quality of machine translation output. It works by comparing the generated translation to one or more reference translations, primarily through matching n-grams (contiguous sequences of words) between the candidate and references. The score reflects how many n-grams in the"
+    },
+    {
+      "i": 75,
+      "question": "How does AlphaGo Zero train without human game records using self-play and Monte Carlo Tree Search?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [
+        "rag_retrieve",
+        "rag_retrieve",
+        "rag_retrieve"
+      ],
+      "score": 0.0,
+      "answer": "## How AlphaGo Zero Trains Without Human Game Records\n\nAlphaGo Zero achieves training without relying on any human game records by using a fully autonomous self-play reinforcement learning approach combined with Monte Carlo Tree Search (MCTS). Here is a detailed explanation of the process:\n\n### Self-Play and Reinforcement Learning\n\n- **Self-Play Data Generation:** Instead of learning from a databa"
+    },
+    {
+      "i": 76,
+      "question": "What is the Heisenberg uncertainty principle and what does it imply about simultaneous measurements?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 77,
+      "question": "How does gradient descent find a local minimum of a function, and what is the role of the learning rate?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 78,
+      "question": "Prove that the square root of 2 is irrational.",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 79,
+      "question": "Who won the 2024 UEFA Champions League and what was the final score?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 80,
+      "question": "What are the lyrics to the chorus of 'Bohemian Rhapsody' by Queen?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 81,
+      "question": "What is the current price of NVIDIA stock (NVDA) right now?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 82,
+      "question": "What are today's weather conditions in Athens, Greece?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    },
+    {
+      "i": 83,
+      "question": "What is GPT-4o's exact token pricing as of this month?",
+      "category": "out_of_context",
+      "expected": [
+        "rag_retrieve",
+        "arxiv_search"
+      ],
+      "actual": [],
+      "score": 0.0,
+      "answer": "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers (corpus: 2020–2026). Your question appears to be outside that scope.\n\nTry asking about topics like retrieval-augmented generation, transformer architectures, evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
+    }
+  ],
+  "timestamp": "20260520-014556"
+}

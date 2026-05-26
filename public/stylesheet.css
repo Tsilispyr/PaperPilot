@@ -1,0 +1,120 @@
+/* ──────────────────────────────────────────────────────────
+   PaperPilot — distinctive Chainlit theme
+   Goal: warm scholarly tone + serious typographic hierarchy
+   so it doesn't look like a generic AI demo.
+   ────────────────────────────────────────────────────────── */
+
+:root {
+  --pp-accent: #A78BFA;
+  --pp-accent-2: #F0ABFC;
+  --pp-paper: #15151B;
+  --pp-ink: #F4F4F5;
+  --pp-mute: #A1A1AA;
+  --pp-line: rgba(255,255,255,0.08);
+  --pp-mono: ui-monospace, SFMono-Regular, "JetBrains Mono", "Fira Code", monospace;
+}
+
+/* ── Top-bar polish ───────────────────────────────────── */
+header,
+header > div {
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--pp-line) !important;
+}
+
+/* ── Brand mark in the chat header ────────────────────── */
+header img[alt="logo"] {
+  filter: drop-shadow(0 0 12px rgba(167, 139, 250, 0.35));
+}
+
+/* ── Chat message styling ─────────────────────────────── */
+.cl-message {
+  font-feature-settings: "ss01", "cv11", "tnum";
+  letter-spacing: -0.005em;
+  line-height: 1.55;
+}
+
+.cl-message[data-author="PaperPilot"] {
+  border-left: 2px solid var(--pp-accent);
+  padding-left: 14px;
+}
+
+/* ── Inline citations get a tiny pill look ────────────── */
+.cl-message a[href*="arxiv.org"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 6px;
+  margin: 0 2px;
+  font-size: 0.85em;
+  border: 1px solid var(--pp-line);
+  border-radius: 999px;
+  background: rgba(167,139,250,0.08);
+  color: var(--pp-accent-2);
+  text-decoration: none;
+}
+.cl-message a[href*="arxiv.org"]:hover {
+  background: rgba(167,139,250,0.18);
+  text-decoration: none;
+}
+
+/* ── Code & tool-call boxes ───────────────────────────── */
+pre, code {
+  font-family: var(--pp-mono) !important;
+}
+
+.cl-step,
+.cl-step-content {
+  background: rgba(167,139,250,0.05) !important;
+  border: 1px dashed var(--pp-line) !important;
+  border-radius: 12px !important;
+}
+
+.cl-step .cl-step-name {
+  color: var(--pp-accent-2) !important;
+  font-family: var(--pp-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+
+/* ── Side panel "Sources" — make them feel like cards ── */
+.cl-element[data-type="text"] {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent) !important;
+  border: 1px solid var(--pp-line) !important;
+  border-radius: 14px !important;
+}
+
+/* ── Starter chips ────────────────────────────────────── */
+button[class*="starter"] {
+  border: 1px solid var(--pp-line) !important;
+  border-radius: 999px !important;
+  background: rgba(255,255,255,0.02) !important;
+  transition: transform 80ms ease, background 120ms ease;
+}
+button[class*="starter"]:hover {
+  transform: translateY(-1px);
+  background: rgba(167,139,250,0.10) !important;
+}
+
+/* ── Subtle scholarly background pattern ──────────────── */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(800px 400px at 100% -10%, rgba(167,139,250,0.10), transparent 60%),
+    radial-gradient(600px 300px at 0% 110%, rgba(240,171,252,0.08), transparent 60%);
+  z-index: -1;
+}
+
+/* ── Make the input feel deliberate, not bouncy ───────── */
+.cl-input,
+textarea {
+  border-radius: 14px !important;
+  border: 1px solid var(--pp-line) !important;
+}
+
+/* ── Hide Chainlit "powered by" if you want a clean demo
+   (keep it commented unless your demo really needs it)
+.watermark { display: none !important; }
+*/

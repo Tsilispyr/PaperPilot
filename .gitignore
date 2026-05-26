@@ -1,0 +1,99 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# --- Virtualenvs ---
+.venv/
+.venv-wsl/
+venv/
+env/
+ENV/
+
+# --- Claude Code settings (local tooling, not for submission) ---
+.claude/
+
+# --- IDE ---
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+~$*
+
+# --- Project data ---
+.env
+data/raw/
+data/processed/
+data/cache.db
+data/cache.db-*
+*.sqlite
+*.sqlite-journal
+
+# --- Logs / outputs ---
+logs/
+*.log
+.pipeline_state.json
+.chainlit/translations/
+.chainlit/*.db
+.files/
+public/audio/
+
+# --- Dev tooling and archives (not for submission) ---
+_dev/
+_archive/
+
+# --- Reports we DO commit (eval evidence)
+# reports/ — keep, don't ignore
+
+# --- Qdrant / Langfuse bind-mount data (gitignore the dirs, not data/ itself) ---
+data/qdrant_storage/
+data/pg_data/
+data/clickhouse_data/
+data/clickhouse_logs/
+data/redis_data/
+data/minio_data/
+# Legacy named-volume paths (pre-Phase-1)
+.qdrant_data/
+.langfuse_data/
+.clickhouse_data/
+.minio_data/
+.postgres_data/
+
+# --- Tests / coverage ---
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+notebooks/*.ipynb_checkpoints/
+
+# --- Type checkers ---
+.mypy_cache/
+.ruff_cache/
+.pyre/
+.pytype/

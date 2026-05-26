@@ -1,0 +1,68 @@
+[project]
+# General project settings
+enable_telemetry = false
+user_env = []
+session_timeout = 3600
+cache = true
+allow_origins = ["*"]
+
+[features]
+# Live agent traces in the UI
+unsafe_allow_html = false
+latex = true
+edit_message = false
+auto_tag_thread = true
+
+[features.spontaneous_file_upload]
+enabled = false
+
+[features.audio]
+enabled = false
+
+[UI]
+name = "PaperPilot"
+description = "Agentic RAG over NLP / LLM / RAG / Agents research papers"
+default_collapse_content = true
+default_expand_messages = false
+hide_cot = false
+github = ""
+custom_css = "/public/stylesheet.css"
+custom_js = ""
+custom_font = "Inter"
+
+# Logo & favicon paths (under /public)
+custom_logo = "/public/logo_dark.svg"
+
+[UI.theme]
+default = "dark"
+layout = "wide"
+font_family = "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif"
+
+[UI.theme.light]
+background = "#FAFAF7"
+paper = "#FFFFFF"
+
+[UI.theme.light.primary]
+main = "#4F46E5"
+dark = "#3730A3"
+light = "#A5B4FC"
+
+[UI.theme.light.text]
+primary = "#0B0B0F"
+secondary = "#3F3F46"
+
+[UI.theme.dark]
+background = "#0B0B0F"
+paper = "#15151B"
+
+[UI.theme.dark.primary]
+main = "#A78BFA"
+dark = "#7C3AED"
+light = "#DDD6FE"
+
+[UI.theme.dark.text]
+primary = "#F4F4F5"
+secondary = "#A1A1AA"
+
+[meta]
+generated_by = "paperpilot"

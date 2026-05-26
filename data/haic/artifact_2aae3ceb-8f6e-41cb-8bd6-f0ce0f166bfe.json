@@ -1,0 +1,115 @@
+{
+  "artifact_schema": "haic.decisions_artifact.v1",
+  "schema_version": "haic.decisions.v1",
+  "session_id": "2aae3ceb-8f6e-41cb-8bd6-f0ce0f166bfe",
+  "run_id": "b6dda47a-40a4-4c71-b0ee-2425a178b634",
+  "meta": {
+    "pilot_tag": "paperpilot-eval",
+    "application": {
+      "name": "paperpilot",
+      "version": "0.1.0",
+      "mode": "eval"
+    },
+    "ai_system": {
+      "model_name": "paperpilot",
+      "model_type": "rag-agent",
+      "model_version": "v2"
+    },
+    "task": {
+      "name": "Research Q&A",
+      "description": "NLP/LLM/RAG paper questions"
+    }
+  },
+  "decisions": [
+    {
+      "schema_version": "haic.decisions.v1",
+      "seq": 1,
+      "t": 1779730642.387822,
+      "actor_type": "human",
+      "action": "query",
+      "object_id": "s001_q1",
+      "duration_s": 5.0,
+      "latency_ms": null,
+      "correct": null,
+      "payload": {
+        "session": 1,
+        "turn": 1
+      }
+    },
+    {
+      "schema_version": "haic.decisions.v1",
+      "seq": 2,
+      "t": 1779730664.1321058,
+      "actor_type": "ai",
+      "action": "retrieve",
+      "object_id": "s001_q1",
+      "duration_s": null,
+      "latency_ms": 13860.831499099731,
+      "correct": null,
+      "payload": {
+        "session": 1,
+        "turn": 1
+      }
+    },
+    {
+      "schema_version": "haic.decisions.v1",
+      "seq": 3,
+      "t": 1779730664.1341684,
+      "actor_type": "ai",
+      "action": "respond",
+      "object_id": "s001_q1",
+      "duration_s": null,
+      "latency_ms": 21741.533279418945,
+      "correct": null,
+      "payload": {
+        "session": 1,
+        "turn": 1
+      }
+    },
+    {
+      "schema_version": "haic.decisions.v1",
+      "seq": 4,
+      "t": 1779730674.2454956,
+      "actor_type": "human",
+      "action": "query",
+      "object_id": "s001_q2",
+      "duration_s": 5.0,
+      "latency_ms": null,
+      "correct": null,
+      "payload": {
+        "session": 1,
+        "turn": 2
+      }
+    },
+    {
+      "schema_version": "haic.decisions.v1",
+      "seq": 5,
+      "t": 1779730674.338035,
+      "actor_type": "ai",
+      "action": "retrieve",
+      "object_id": "s001_q2",
+      "duration_s": null,
+      "latency_ms": 85.19220352172852,
+      "correct": null,
+      "payload": {
+        "session": 1,
+        "turn": 2
+      }
+    },
+    {
+      "schema_version": "haic.decisions.v1",
+      "seq": 6,
+      "t": 1779730674.3400855,
+      "actor_type": "ai",
+      "action": "respond",
+      "object_id": "s001_q2",
+      "duration_s": null,
+      "latency_ms": 90.2249813079834,
+      "correct": null,
+      "payload": {
+        "session": 1,
+        "turn": 2
+      }
+    }
+  ]
+}

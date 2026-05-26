@@ -1,0 +1,3 @@
+{"schema_version": "haic.decisions.v1", "seq": 1, "t": 1779730228.5672069, "actor_type": "human", "action": "query", "object_id": "s001_q1", "duration_s": 5.0, "latency_ms": null, "correct": null, "payload": {"session": 1, "turn": 1}}
+{"schema_version": "haic.decisions.v1", "seq": 2, "t": 1779730469.2625415, "actor_type": "ai", "action": "retrieve", "object_id": "s001_q1", "duration_s": null, "latency_ms": 230613.4660243988, "correct": null, "payload": {"session": 1, "turn": 1}}
+{"schema_version": "haic.decisions.v1", "seq": 3, "t": 1779730469.2648473, "actor_type": "ai", "action": "respond", "object_id": "s001_q1", "duration_s": null, "latency_ms": 240692.36779212952, "correct": null, "payload": {"session": 1, "turn": 1}}

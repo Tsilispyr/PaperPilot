@@ -1,0 +1,571 @@
+{
+  "version": "v1",
+  "metrics_def": {
+    "helpfulness": {
+      "scale": "1-5 (1=useless, 5=fully addresses the user's intent)",
+      "description": "Does the answer give the user what they actually need to act/decide?"
+    },
+    "trust_calibration": {
+      "scale": "1-3 (1=overconfident when wrong, 2=hedged appropriately, 3=correct AND confident)",
+      "description": "Does the system's confidence match its actual correctness?"
+    },
+    "effort_saved": {
+      "scale": "1-5 (1=user must still read the paper, 5=user has the answer)",
+      "description": "How much reading effort does the answer save vs. going to source?"
+    },
+    "harm_potential": {
+      "scale": "1-3 (1=harmless if wrong, 2=mildly misleading, 3=could cause bad downstream decision)",
+      "description": "Worst-case downstream cost if the user trusts a wrong answer."
+    }
+  },
+  "n": 45,
+  "aggregate": {
+    "helpfulness": 3.7555555555555555,
+    "trust_calibration": 2.8222222222222224,
+    "effort_saved": 3.311111111111111,
+    "harm_potential": 1.0666666666666667
+  },
+  "rows": [
+    {
+      "i": 0,
+      "category": "definitional",
+      "question": "What is HyDE (Hypothetical Document Embeddings) in the context of dense retrieval?",
+      "answer": "The retrieved papers and search results do not contain a direct explanation or description of HyDE (Hypothetical Document Embeddings) in the context of dense retrieval. The term \"HyDE\" or \"Hypothetical Document Embeddings\" does not appear explicitly in the indexed corpus or recent ArXiv papers I searched.\n\nBased on the absence of direct references, I cannot provide a grounded explanation of HyDE from the current corpus.\n\nIf you want, I can try a broader or alternative search query, or you may want to check the original paper or source where HyDE was proposed for the most accurate and detailed ",
+      "scores": {
+        "helpfulness": 1.0,
+        "trust_calibration": 3.0,
+        "effort_saved": 1.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 1,
+      "category": "definitional",
+      "question": "What does the term 'faithfulness' mean as a RAGAS metric?",
+      "answer": "The term \"faithfulness\" as a RAGAS metric relates to how well a Retrieval-Augmented Generation (RAG) model's output aligns with and accurately reflects the retrieved context or evidence. Specifically, faithfulness measures whether the generated answer or rationale is consistent with the supporting documents or knowledge used by the model, avoiding hallucinations or contradictions.\n\nOne relevant paper, \"Faithfulness-QA: A Counterfactual Entity Substitution Dataset for Training Context-Faithful RAG Models\" (Ju et al., 2026), discusses faithfulness in the context of knowledge conflicts where retr",
+      "scores": {
+        "helpfulness": 5.0,
+        "trust_calibration": 3.0,
+        "effort_saved": 4.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 2,
+      "category": "definitional",
+      "question": "Define 'Retrieval-Augmented Generation' (RAG) and identify its two core components.",
+      "answer": "Retrieval-Augmented Generation (RAG) is an architectural paradigm that combines retrieval of relevant information from a document corpus with generation by a large language model (LLM). Instead of directly generating answers from the LLM's internal knowledge, RAG systems first retrieve relevant documents or chunks of text and then condition the generative model on this retrieved evidence to produce answers. This approach improves grounding and factual accuracy in generated responses.\n\nThe two core components of RAG are:\n\n1. **Retrieval Component**: This involves preparing a document corpus by ",
+      "scores": {
+        "helpfulness": 5.0,
+        "trust_calibration": 3.0,
+        "effort_saved": 5.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 3,
+      "category": "definitional",
+      "question": "What is a cross-encoder reranker, and why is it used after a bi-encoder retrieval stage?",
+      "answer": "A cross-encoder reranker is a model used to re-score and reorder a set of candidate documents or passages retrieved by an initial retrieval stage, typically done by a bi-encoder. The bi-encoder retrieval stage efficiently retrieves a broad set of relevant candidates by encoding queries and documents separately into embeddings and then performing similarity search. However, this approach may lack fine-grained interaction between the query and each candidate document.\n\nThe cross-encoder reranker addresses this by jointly encoding the query and each candidate document together, allowing it to mod",
+      "scores": {
+        "helpfulness": 5.0,
+        "trust_calibration": 3.0,
+        "effort_saved": 5.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 4,
+      "category": "definitional",
+      "question": "What is the ReAct framework for LLM agents?",
+      "answer": "The ReAct framework for LLM agents is a method that integrates reasoning and acting in language models to enable more effective interaction with environments or tasks. While the retrieved papers do not provide a direct detailed explanation of the original ReAct framework, one recent paper titled \"GEM: Graph-Enhanced Mixture-of-Experts with ReAct Agents for Dialogue State Tracking\" (Ziqi Zhu et al., 2026) uses ReAct agents as part of a system for dialogue state tracking. In this context, ReAct agents perform structured reasoning over dialogue context, coordinating with other specialized experts",
+      "scores": {
+        "helpfulness": 4.0,
+        "trust_calibration": 2.0,
+        "effort_saved": 4.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 5,
+      "category": "comparative",
+      "question": "How does Self-RAG differ from standard RAG?",
+      "answer": "Self-RAG differs from standard RAG primarily in its architecture and approach to retrieval and generation:\n\n- Standard RAG (Retrieval-Augmented Generation) typically uses a single-pass pipeline where a large language model (LLM) retrieves relevant documents or passages from an external knowledge base and then generates answers conditioned on those retrieved texts. This approach is effective but can struggle with complex, multi-hop queries that require multi-step reasoning and evidence aggregation.\n\n- Self-RAG, as mentioned in the context of KG-Infused RAG and related works, often refers to an ",
+      "scores": {
+        "helpfulness": 3.0,
+        "trust_calibration": 2.0,
+        "effort_saved": 4.0,
+        "harm_potential": 2.0
+      }
+    },
+    {
+      "i": 6,
+      "category": "comparative",
+      "question": "Compare RAGAS and RAGChecker — what does each evaluate that the other doesn't, or differently?",
+      "answer": "The retrieved papers provide detailed evaluation results for RAGAS but do not explicitly mention RAGChecker or a direct comparison between RAGAS and RAGChecker.\n\nFrom the paper \"Agentic clinical reasoning over longitudinal myeloma records: a retrospective evaluation against expert consensus\" (2026), RAGAS (referred to as Advanced RAG or Agentic System in some contexts) is evaluated on clinical reasoning tasks with metrics like concordance with expert consensus, stratified by complexity levels. The evaluation includes statistical significance tests comparing RAGAS variants and baselines, focusi",
+      "scores": {
+        "helpfulness": 2.0,
+        "trust_calibration": 3.0,
+        "effort_saved": 2.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 7,
+      "category": "comparative",
+      "question": "What is the main difference between sparse retrieval (BM25) and dense retrieval (bi-encoders)?",
+      "answer": "The main difference between sparse retrieval (BM25) and dense retrieval (bi-encoders) lies in how they represent and match queries and documents:\n\n- Sparse retrieval like BM25 relies on lexical matching based on exact or partial term overlap between query and documents. It uses term frequency and inverse document frequency statistics to score relevance. This approach is effective when relevant information is expressed through distinctive terminology or surface patterns.\n\n- Dense retrieval with bi-encoders encodes queries and documents into dense vector embeddings in a semantic space. Relevance",
+      "scores": {
+        "helpfulness": 5.0,
+        "trust_calibration": 3.0,
+        "effort_saved": 5.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 8,
+      "category": "comparative",
+      "question": "How do GraphRAG and standard RAG differ in how they organize the corpus?",
+      "answer": "The retrieved indexed corpus did not contain direct information comparing GraphRAG and standard RAG in how they organize the corpus. A live ArXiv search for \"GraphRAG corpus organization standard RAG corpus organization\" also did not return relevant papers describing this comparison.\n\nBased on the general knowledge of RAG (Retrieval-Augmented Generation) systems from the retrieved papers:\n\n- Standard RAG organizes the corpus by preprocessing source documents, segmenting them into smaller units called chunks, embedding these chunks into vector representations, and storing them in a vector index",
+      "scores": {
+        "helpfulness": 4.0,
+        "trust_calibration": 3.0,
+        "effort_saved": 3.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 9,
+      "category": "comparative",
+      "question": "Compare LangGraph and CrewAI as agent frameworks.",
+      "answer": "Here is a comparison of LangGraph and CrewAI as agent frameworks based on the retrieved papers:\n\n| Aspect | LangGraph | CrewAI | Combined Use (LangGraph + CrewAI) |\n|--------|-----------|--------|----------------------------------|\n| Core Concept | A graph-based modular framework built on LangChain for creating and managing agents and their workflows. It supports dynamic state management, context retention, and automates complex workflows by linking agents. | Focuses on enhancing team collaboration capabilities and system performance through intelligent task allocation and resource management ",
+      "scores": {
+        "helpfulness": 4.0,
+        "trust_calibration": 2.0,
+        "effort_saved": 4.0,
+        "harm_potential": 2.0
+      }
+    },
+    {
+      "i": 10,
+      "category": "methodological",
+      "question": "Walk through the steps of the ReAct loop as proposed in the original paper.",
+      "answer": "The original ReAct paper (\"ReAct: Synergizing Reasoning and Acting in Language Models\" by Yao et al., 2022) proposes an interleaved loop of reasoning and acting steps for language models to solve tasks more effectively by combining reasoning traces with task-specific actions.\n\nThe ReAct loop proceeds as follows:\n\n1. **Reasoning Step**: The model generates a reasoning trace or chain-of-thought that helps it induce, track, and update its understanding or plan for the task at hand. This reasoning helps the model handle exceptions and plan next steps.\n\n2. **Acting Step**: The model generates an ac",
+      "scores": {
+        "helpfulness": 5.0,
+        "trust_calibration": 3.0,
+        "effort_saved": 5.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 11,
+      "category": "methodological",
+      "question": "How does Hypothetical Document Embeddings (HyDE) generate the search vector at query time?",
+      "answer": "The retrieved papers and search results do not contain direct information about how Hypothetical Document Embeddings (HyDE) generate the search vector at query time.\n\nBased on my indexed corpus and recent ArXiv search, there is no explicit explanation or description of the HyDE method's query-time search vector generation process.\n\nIf you want, I can try to help with a general explanation of HyDE from other sources or related concepts, but for the exact mechanism as described in the original HyDE paper or related work, this is not in my corpus. \n\nWould you like me to try a broader search or pr",
+      "scores": {
+        "helpfulness": 2.0,
+        "trust_calibration": 3.0,
+        "effort_saved": 1.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 12,
+      "category": "methodological",
+      "question": "Describe the chunking pipeline typically used for academic-paper RAG: what are the key choices?",
+      "answer": "The chunking pipeline for academic-paper Retrieval-Augmented Generation (RAG) typically involves these key stages and choices:\n\n1. **Preprocessing and Chunking**: The document corpus is first preprocessed and segmented into smaller textual units called chunks. This is necessary because:\n   - Large documents cannot be efficiently indexed or retrieved as a whole.\n   - Retrieval precision improves by matching queries to relevant passages rather than entire documents.\n   - Chunks must fit within the limited context window of large language models (LLMs).\n\n2. **Chunk Size and Overlapping**: \n   - C",
+      "scores": {
+        "helpfulness": 4.0,
+        "trust_calibration": 3.0,
+        "effort_saved": 4.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 13,
+      "category": "methodological",
+      "question": "How does sentence-transformers' bi-encoder differ from a cross-encoder in inference cost?",
+      "answer": "The retrieved papers do not directly compare sentence-transformers' bi-encoder and cross-encoder inference costs.\n\nBased on general knowledge from the literature on sentence-transformers and cross-encoders:\n\n- A **bi-encoder** encodes the two sentences independently into fixed-size embeddings using the same encoder (e.g., a transformer). Then, similarity (e.g., cosine) is computed between the embeddings. This allows precomputing embeddings for one side (e.g., all candidate sentences) and only encoding the query at runtime, making inference very efficient and scalable for large candidate sets.\n",
+      "scores": {
+        "helpfulness": 5.0,
+        "trust_calibration": 3.0,
+        "effort_saved": 4.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 14,
+      "category": "methodological",
+      "question": "What does 'context precision' specifically measure and how is it computed in RAGAS?",
+      "answer": "The retrieved indexed corpus and recent ArXiv search did not return any direct explanation or definition of \"context precision\" specifically in the RAGAS system.\n\nFrom the available information, \"context precision\" as a metric is not explicitly described or computed in the papers related to RAGAS or similar Retrieval-Augmented Generation (RAG) systems in the indexed corpus. The papers mention various performance metrics like truthfulness, miss rate, accuracy, and retrieval recall, but none define or explain \"context precision\" or its computation in RAGAS.\n\nTherefore, I couldn't find a grounded",
+      "scores": {
+        "helpfulness": 2.0,
+        "trust_calibration": 3.0,
+        "effort_saved": 1.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 15,
+      "category": "attribution",
+      "question": "Which paper introduced the original RAG architecture for open-domain question answering?",
+      "answer": "The original paper that introduced the Retrieval-Augmented Generation (RAG) architecture for open-domain question answering is:\n\nPatrick Lewis, Ethan Perez, Aleksandra Piktus, Fabio Petroni, Vladimir Karpukhin, Naman Goyal, Heinrich Küttler, Mike Lewis, Wen-tau Yih, Tim Rocktäschel, et al. 2020. \"Retrieval-augmented generation for knowledge-intensive NLP tasks.\" Advances in Neural Information Processing Systems, 33:9459–9474.\n\nThis paper is widely recognized as the canonical source for the RAG architecture, which combines retrieval of relevant documents with generative models to improve knowle",
+      "scores": {
+        "helpfulness": 5.0,
+        "trust_calibration": 3.0,
+        "effort_saved": 5.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 16,
+      "category": "attribution",
+      "question": "Who proposed Self-RAG and in which year?",
+      "answer": "Self-RAG was proposed by Akari Asai, Zeqiu Wu, Yizhong Wang, Avirup Sil, and Hannaneh Hajishirzi in 2023. The paper is titled \"Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection\" and introduces a framework where a language model adaptively retrieves passages on-demand and reflects on them to improve factuality and generation quality [Asai et al., 2023].\n\nSources:\n- Asai, A., Wu, Z., Wang, Y., Sil, A., & Hajishirzi, H. (2023). Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection. arXiv:2310.11511 [cs.CL]. https://arxiv.org/abs/2310.11511",
+      "scores": {
+        "helpfulness": 5.0,
+        "trust_calibration": 3.0,
+        "effort_saved": 5.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 17,
+      "category": "attribution",
+      "question": "Which paper proposed the ReAct framework for LLM agents?",
+      "answer": "The ReAct framework for LLM agents was originally proposed in the paper:\n\n- \"ReAct: Synergizing Reasoning and Acting in Language Models\" by Yao et al., 2022.\n\nThis paper introduced the ReAct framework, which combines reasoning and acting (interleaving reasoning traces and actions) to improve the capabilities of language models as agents.\n\nWhile this exact paper is not in the retrieved recent corpus or the latest ArXiv search results (which mostly show later works building on or using ReAct agents), the canonical citation for the ReAct framework is:\n\n**Yao et al., 2022, \"ReAct: Synergizing Reas",
+      "scores": {
+        "helpfulness": 5.0,
+        "trust_calibration": 3.0,
+        "effort_saved": 4.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 18,
+      "category": "attribution",
+      "question": "Who introduced the BGE family of embedding models?",
+      "answer": "The retrieved ArXiv search results do not explicitly mention who introduced the BGE family of embedding models. The papers found discuss embedding models and related topics but do not attribute the BGE family to any specific authors or organization.\n\nTherefore, based on the current indexed corpus and a quick ArXiv search, I could not find a direct attribution for the introduction of the BGE family of embedding models.\n\nIf you have any other details or context about BGE (such as full name, organization, or related work), I can try searching again. Otherwise, this specific information is not in ",
+      "scores": {
+        "helpfulness": 2.0,
+        "trust_calibration": 3.0,
+        "effort_saved": 1.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 19,
+      "category": "attribution",
+      "question": "Which paper proposed the RAGAS evaluation framework?",
+      "answer": "The paper that proposed the RAGAS evaluation framework is titled \"Ragas: Automated Evaluation of Retrieval Augmented Generation\" by Shahul Es, Jithin James, Luis Espinosa-Anke, and Steven Schockaert (2023). This paper introduces Ragas (Retrieval Augmented Generation Assessment), a framework for reference-free evaluation of Retrieval Augmented Generation (RAG) pipelines. It provides a suite of metrics to evaluate different dimensions of RAG systems without relying on ground truth human annotations, aiming to speed up evaluation cycles for RAG architectures [Es et al., 2023].\n\nSource:\n- \"Ragas: ",
+      "scores": {
+        "helpfulness": 5.0,
+        "trust_calibration": 3.0,
+        "effort_saved": 5.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 20,
+      "category": "numerical",
+      "question": "What benchmark dataset and approximate scale does HotpotQA cover for multi-hop QA evaluation?",
+      "answer": "The HotpotQA benchmark dataset is a multi-hop reasoning benchmark that requires models to synthesize evidence across multiple documents to derive the correct answer. It specifically involves 2-hop questions in a full Wikipedia setting with approximately 5.2 million Wikipedia passages available for retrieval. The dataset is used to evaluate multi-hop question answering systems on their ability to perform reasoning that connects information from multiple documents to answer a question correctly.\n\nIn summary:\n- Dataset: HotpotQA\n- Task: Multi-hop question answering (2-hop reasoning)\n- Scale: Full",
+      "scores": {
+        "helpfulness": 3.0,
+        "trust_calibration": 1.0,
+        "effort_saved": 3.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 21,
+      "category": "numerical",
+      "question": "What is the typical embedding dimensionality of OpenAI's text-embedding-3-small model?",
+      "answer": "I couldn't find explicit information about the embedding dimensionality of OpenAI's text-embedding-3-small model in my indexed corpus or in a quick ArXiv search. The available papers and reports do not mention this specific detail. You may want to check OpenAI's official documentation or blog posts directly for the most accurate and up-to-date technical specifications.",
+      "scores": {
+        "helpfulness": 2.0,
+        "trust_calibration": 2.0,
+        "effort_saved": 1.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 22,
+      "category": "numerical",
+      "question": "Around what context length does the original ReAct paper operate, and how many ReAct steps did the authors typically allow per question on HotpotQA?",
+      "answer": "The original ReAct paper by Yao et al. (2022) does not explicitly state a fixed context length in tokens for their experiments, but it operates within the typical context window of large language models used at the time (e.g., GPT-3 scale models with context windows around 2,000 tokens). Regarding the number of ReAct steps per question on HotpotQA, the paper describes an interleaved reasoning and acting process where the model generates reasoning traces and takes actions (e.g., querying Wikipedia) iteratively. Typically, the number of ReAct steps corresponds to the number of reasoning and acti",
+      "scores": {
+        "helpfulness": 3.0,
+        "trust_calibration": 3.0,
+        "effort_saved": 3.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 23,
+      "category": "numerical",
+      "question": "What scoring scale does the standard RAGAS faithfulness metric output?",
+      "answer": "The standard RAGAS faithfulness metric outputs scores on a scale from 0 to 1, where 0 means the generated claims are fully unsupported by the retrieved source documents, and 1 means all claims are grounded in the sources. Scores above 0.8 indicate strong faithfulness or strong grounding in source documents. This scale reflects the proportion of claims in a generated answer that can be attributed to retrieved source documents, assessing whether the system grounds its responses in evidence rather than hallucinating information [Ford et al., 2026, \"Navigating Global AI Regulation: A Multi-Jurisdi",
+      "scores": {
+        "helpfulness": 5.0,
+        "trust_calibration": 3.0,
+        "effort_saved": 5.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 24,
+      "category": "numerical",
+      "question": "How many parameters does the BGE-reranker-base model have, approximately?",
+      "answer": "The quick ArXiv search did not return relevant information about the number of parameters in the BGE-reranker-base model.\n\nBased on the indexed corpus and the search results, there is no explicit mention of the parameter count for the BGE-reranker-base model.\n\nTherefore, I couldn't find the approximate number of parameters for the BGE-reranker-base model in my indexed corpus or in a quick ArXiv search.",
+      "scores": {
+        "helpfulness": 1.0,
+        "trust_calibration": 3.0,
+        "effort_saved": 1.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 25,
+      "category": "out_of_context",
+      "question": "What is the current price of OpenAI's gpt-4.1-mini per million input tokens as of today?",
+      "answer": "I couldn't find the current price of OpenAI's GPT-4.1-mini per million input tokens in my indexed corpus or in a quick ArXiv search. The closest related paper was the \"OpenAI o1 System Card\" (2024) which discusses the o1 and o1-mini models' safety and reasoning capabilities but does not mention pricing details.\n\nFor the most accurate and up-to-date pricing, I recommend checking OpenAI's official pricing page or announcements directly.",
+      "scores": {
+        "helpfulness": 4.0,
+        "trust_calibration": 3.0,
+        "effort_saved": 3.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 27,
+      "category": "out_of_context",
+      "question": "Which English Premier League team had the highest possession percentage last weekend?",
+      "answer": "I couldn't find specific information about which English Premier League team had the highest possession percentage last weekend in my indexed corpus or in a quick ArXiv search. The papers I found discuss general statistical modeling and analysis of the Premier League but do not provide recent match possession statistics.\n\nFor the latest possession stats, you may want to check live sports analytics websites or official Premier League match reports directly.",
+      "scores": {
+        "helpfulness": 3.0,
+        "trust_calibration": 3.0,
+        "effort_saved": 1.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 28,
+      "category": "out_of_context",
+      "question": "Walk me through the proof of Cantor's diagonal argument.",
+      "answer": "Cantor's diagonal argument is a classic proof showing that the set of real numbers is uncountable, i.e., there is no one-to-one correspondence between the natural numbers and the real numbers. Here is a step-by-step walkthrough of the proof:\n\n1. **Assumption for contradiction**: Suppose the real numbers between 0 and 1 can be listed in a sequence (counted), i.e., there is a list where each real number corresponds to a natural number index:\n   \\[\n   r_1, r_2, r_3, \\ldots\n   \\]\n   Each \\( r_i \\) is expressed in its decimal expansion:\n   \\[\n   r_1 = 0.d_{11} d_{12} d_{13} \\ldots \\\\\n   r_2 = 0.d_{",
+      "scores": {
+        "helpfulness": 5.0,
+        "trust_calibration": 3.0,
+        "effort_saved": 5.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 29,
+      "category": "out_of_context",
+      "question": "What hyperparameters does the latest internal Google Search ranking model use?",
+      "answer": "I could not find any recent or indexed papers that disclose the hyperparameters of the latest internal Google Search ranking model. The ArXiv search also did not return relevant papers describing Google's internal search ranking model hyperparameters.\n\nIn summary:\n- No public papers or preprints currently reveal the hyperparameters used by Google's latest internal Search ranking model.\n- The information is likely proprietary and not publicly disclosed in academic or preprint literature.\n\nIf you want, I can help summarize typical hyperparameters used in learning-to-rank models in general, but s",
+      "scores": {
+        "helpfulness": 5.0,
+        "trust_calibration": 3.0,
+        "effort_saved": 5.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 30,
+      "category": "out_of_context",
+      "question": "What is the maximum payload capacity of the DJI Matrice 350 RTK drone?",
+      "answer": "The retrieved documents do not explicitly state the maximum payload capacity of the DJI Matrice 350 RTK drone. However, based on general knowledge about this model (not from the retrieved papers), the DJI Matrice 350 RTK typically supports a maximum payload capacity of around 2.7 kg (6 lbs).\n\nSince this specific detail was not found in the indexed corpus or the recent ArXiv search results, I recommend checking DJI's official specifications or product datasheet for the most accurate and up-to-date payload capacity information.\n\nIf you want, I can try a more specific search or look for official ",
+      "scores": {
+        "helpfulness": 4.0,
+        "trust_calibration": 3.0,
+        "effort_saved": 4.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 31,
+      "category": "out_of_context",
+      "question": "How does a quadrotor UAV maintain attitude stability using a PID controller?",
+      "answer": "A quadrotor UAV maintains attitude stability using a PID controller by regulating its rotational angles (roll, pitch, yaw) through feedback control loops that adjust motor thrusts to correct deviations from desired attitudes.\n\nSpecifically, the PID controller computes control inputs based on the error between the desired and current attitude angles:\n- The Proportional (P) term produces a control output proportional to the current error, providing immediate correction.\n- The Integral (I) term accounts for the accumulation of past errors, helping eliminate steady-state offset.\n- The Derivative (",
+      "scores": {
+        "helpfulness": 5.0,
+        "trust_calibration": 3.0,
+        "effort_saved": 4.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 33,
+      "category": "out_of_context",
+      "question": "How does GPS-denied navigation work for military drones using inertial measurement units?",
+      "answer": "GPS-denied navigation for military drones using inertial measurement units (IMUs) typically relies on sensor fusion algorithms that combine IMU data with other onboard sensors to estimate the drone's position, orientation, and velocity without GPS signals.\n\nKey points from recent research include:\n\n1. The navigation problem is formulated as estimating the 6 degrees-of-freedom (6 DoF) pose (orientation, position, linear velocity) of the drone in 3D space using nonlinear navigation kinematics.\n\n2. A Quaternion-based Unscented Kalman Filter (QNUKF) approach has been proposed to fuse data from a l",
+      "scores": {
+        "helpfulness": 5.0,
+        "trust_calibration": 2.0,
+        "effort_saved": 4.0,
+        "harm_potential": 2.0
+      }
+    },
+    {
+      "i": 34,
+      "category": "out_of_context",
+      "question": "What is the BVLOS (Beyond Visual Line of Sight) regulatory framework for commercial drones in the EU?",
+      "answer": "The retrieved papers do not provide a direct detailed summary of the BVLOS (Beyond Visual Line of Sight) regulatory framework for commercial drones in the EU. However, I can summarize the general context based on the closest relevant information:\n\n- BVLOS drone operations in the EU require new regulatory frameworks to ensure safety since drones operate beyond the visual line of sight of the operator. This involves challenges such as continuous remote control, obstacle detection, and risk management on the ground.\n- One paper proposes a multi-layer framework for planning BVLOS drone operations ",
+      "scores": {
+        "helpfulness": 4.0,
+        "trust_calibration": 3.0,
+        "effort_saved": 3.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 35,
+      "category": "out_of_context",
+      "question": "How does LiDAR-based SLAM work for autonomous UAV mapping?",
+      "answer": "LiDAR-based SLAM (Simultaneous Localization and Mapping) for autonomous UAV mapping works by using LiDAR sensors to gather dense 3D range data of the environment, which is then processed to simultaneously build a map and localize the UAV within it. Key aspects include:\n\n1. **Sensor Data Acquisition**: LiDAR sensors emit laser pulses and measure the time it takes for the reflections to return, producing precise 3D point clouds representing the surroundings.\n\n2. **Mapping**: The system incrementally constructs a 3D map, often represented as dense volumetric occupancy grids or point clouds, captu",
+      "scores": {
+        "helpfulness": 5.0,
+        "trust_calibration": 2.0,
+        "effort_saved": 4.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 36,
+      "category": "out_of_context",
+      "question": "What is the difference between fixed-wing and multirotor UAVs for agricultural spraying applications?",
+      "answer": "The main differences between fixed-wing and multirotor UAVs for agricultural spraying applications are:\n\n1. Flight Endurance and Range:\n   - Fixed-wing UAVs have better aerodynamic performance and longer flight endurance, allowing them to cover larger areas in a single flight. They are more energy-efficient in forward flight, which is beneficial for long-range spraying tasks.\n   - Multirotor UAVs typically have shorter flight times and ranges because they rely on rotors for lift and hovering, which consumes more energy.\n\n2. Flight Characteristics:\n   - Fixed-wing UAVs require forward motion to",
+      "scores": {
+        "helpfulness": 5.0,
+        "trust_calibration": 3.0,
+        "effort_saved": 5.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 37,
+      "category": "out_of_context",
+      "question": "What were the main policy outcomes of the G7 summit in June 2024?",
+      "answer": "I couldn't find specific information on the main policy outcomes of the G7 summit in June 2024 in my indexed corpus or in a quick ArXiv search. The retrieved papers do not cover this topic. You may want to check official G7 summit releases or trusted news sources directly for the latest policy outcomes.",
+      "scores": {
+        "helpfulness": 2.0,
+        "trust_calibration": 3.0,
+        "effort_saved": 1.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 38,
+      "category": "out_of_context",
+      "question": "Who is the current NATO Secretary General and what are their stated priorities for 2025?",
+      "answer": "I couldn't find information about the current NATO Secretary General or their stated priorities for 2025 in my indexed corpus or in a quick ArXiv search. The retrieved papers were unrelated to NATO or its leadership.\n\nFor the most accurate and up-to-date information, I recommend checking NATO's official website or recent official statements directly.",
+      "scores": {
+        "helpfulness": 2.0,
+        "trust_calibration": 3.0,
+        "effort_saved": 1.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 39,
+      "category": "out_of_context",
+      "question": "What sanctions did the EU impose on Russia following the 2022 invasion of Ukraine, and how have they evolved?",
+      "answer": "I couldn't find detailed information in my indexed corpus or in a quick ArXiv search specifically about the EU sanctions imposed on Russia following the 2022 invasion of Ukraine and how they have evolved. The closest related work I retrieved was about social media discourse and scientific cooperation impacts related to the conflict.\n\nYou may want to check official EU sources or specialized policy analysis reports directly for the most accurate and up-to-date information on the sanctions.",
+      "scores": {
+        "helpfulness": 2.0,
+        "trust_calibration": 3.0,
+        "effort_saved": 1.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 40,
+      "category": "out_of_context",
+      "question": "How does the US Senate filibuster procedurally work, and what is cloture?",
+      "answer": "The ArXiv search did not return papers directly explaining the US Senate filibuster or cloture procedure. The closest papers are about Australian Senate audits and political analysis, which are not relevant.\n\nBased on general knowledge (not from the retrieved corpus or ArXiv), here is a concise explanation:\n\n- The US Senate filibuster is a procedural tactic where one or more senators extend debate on a piece of legislation to delay or block a vote.\n- Senators can speak for as long as they wish unless a supermajority votes to end debate.\n- Cloture is the procedure to end a filibuster. It requir",
+      "scores": {
+        "helpfulness": 5.0,
+        "trust_calibration": 3.0,
+        "effort_saved": 4.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 41,
+      "category": "out_of_context",
+      "question": "What is the Greek government's current fiscal consolidation plan approved by the European Commission?",
+      "answer": "I couldn't find information about the Greek government's current fiscal consolidation plan approved by the European Commission in my indexed corpus. Would you like me to perform a live ArXiv search or suggest other sources?",
+      "scores": {
+        "helpfulness": 2.0,
+        "trust_calibration": 3.0,
+        "effort_saved": 1.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 77,
+      "category": "out_of_context",
+      "question": "How does gradient descent find a local minimum of a function, and what is the role of the learning rate?",
+      "answer": "Gradient descent is an iterative optimization algorithm used to find a local minimum of a function by moving step-by-step in the direction of the steepest descent, which is the negative gradient of the function at the current point.\n\nHere's how it works step-by-step:\n\n1. **Initialization**: Start with an initial guess for the parameters (or input variables) of the function.\n\n2. **Compute Gradient**: Calculate the gradient (vector of partial derivatives) of the function at the current point. The gradient points in the direction of the steepest increase.\n\n3. **Update Parameters**: Move the param",
+      "scores": {
+        "helpfulness": 5.0,
+        "trust_calibration": 3.0,
+        "effort_saved": 5.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 78,
+      "category": "out_of_context",
+      "question": "Prove that the square root of 2 is irrational.",
+      "answer": "The classic proof that the square root of 2 is irrational is by contradiction. Here's the step-by-step argument:\n\n1. **Assume the opposite:** Suppose \\(\\sqrt{2}\\) is rational. Then it can be expressed as a fraction \\(\\frac{a}{b}\\), where \\(a\\) and \\(b\\) are integers with no common factors (i.e., the fraction is in lowest terms), and \\(b \\neq 0\\).\n\n2. **Write the equation:**  \n   \\[\n   \\sqrt{2} = \\frac{a}{b}\n   \\]\n\n3. **Square both sides:**  \n   \\[\n   2 = \\frac{a^2}{b^2}\n   \\]\n   Multiply both sides by \\(b^2\\):  \n   \\[\n   2b^2 = a^2\n   \\]\n\n4. **Analyze parity:**  \n   This means \\(a^2\\) is even ",
+      "scores": {
+        "helpfulness": 5.0,
+        "trust_calibration": 3.0,
+        "effort_saved": 5.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 80,
+      "category": "out_of_context",
+      "question": "What are the lyrics to the chorus of 'Bohemian Rhapsody' by Queen?",
+      "answer": "I couldn't find the lyrics to 'Bohemian Rhapsody' by Queen in my indexed corpus or in a quick ArXiv search. Lyrics are typically not included in scientific paper databases or academic repositories. You may want to check official music websites or licensed lyrics platforms directly.",
+      "scores": {
+        "helpfulness": 2.0,
+        "trust_calibration": 3.0,
+        "effort_saved": 1.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 81,
+      "category": "out_of_context",
+      "question": "What is the current price of NVIDIA stock (NVDA) right now?",
+      "answer": "I couldn't find the current price of NVIDIA stock (NVDA) in my indexed corpus, which focuses on research papers. For real-time stock prices, you may want to check financial news websites, stock market apps, or financial platforms like Yahoo Finance, Google Finance, or Bloomberg.",
+      "scores": {
+        "helpfulness": 4.0,
+        "trust_calibration": 3.0,
+        "effort_saved": 3.0,
+        "harm_potential": 1.0
+      }
+    },
+    {
+      "i": 82,
+      "category": "out_of_context",
+      "question": "What are today's weather conditions in Athens, Greece?",
+      "answer": "I couldn't find this in my indexed corpus or in a quick ArXiv search. The closest related work I retrieved was about NLP and AI research papers, which do not cover real-time weather information. You may want to check a dedicated weather service or website like the National Weather Service, Weather.com, or a weather app directly for current conditions in Athens, Greece.",
+      "scores": {
+        "helpfulness": 3.0,
+        "trust_calibration": 3.0,
+        "effort_saved": 4.0,
+        "harm_potential": 1.0
+      }
+    }
+  ],
+  "timestamp": "20260508-055522"
+}

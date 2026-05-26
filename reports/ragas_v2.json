@@ -1,0 +1,50 @@
+{
+  "version": "v2",
+  "n": 84,
+  "scores": {
+    "context_precision": 0.1904761904652447,
+    "context_recall": 0.3630952380952381,
+    "faithfulness": 0.2915527823906689,
+    "answer_relevancy": 0.4381912457956228
+  },
+  "by_category": {
+    "attribution": {
+      "context_precision": 0.48333333330722217,
+      "context_recall": 0.4,
+      "faithfulness": 0.6438562091503268,
+      "answer_relevancy": 0.7355918541056374
+    },
+    "comparative": {
+      "context_precision": 0.5611111110924074,
+      "context_recall": 0.7,
+      "faithfulness": 0.767025225899999,
+      "answer_relevancy": 0.9280689854476026
+    },
+    "definitional": {
+      "context_precision": 0.9222222221814814,
+      "context_recall": 1.0,
+      "faithfulness": 0.9299125556838804,
+      "answer_relevancy": 0.9175678716969727
+    },
+    "methodological": {
+      "context_precision": 0.399999999975,
+      "context_recall": 0.6,
+      "faithfulness": 0.881165824915825,
+      "answer_relevancy": 0.8795056177118296
+    },
+    "numerical": {
+      "context_precision": 0.46666666662999995,
+      "context_recall": 0.2,
+      "faithfulness": 0.6912049354154618,
+      "answer_relevancy": 0.698063130269641
+    },
+    "out_of_context": {
+      "context_precision": 0.03107344632457627,
+      "context_recall": 0.2711864406779661,
+      "faithfulness": 0.08346796551675795,
+      "answer_relevancy": 0.2714250398419305
+    }
+  },
+  "csv": "D:\\\u03a0\u039c\u03a3\\\u0395\u03c6\u03b1\u03c1\u03bc\u03bf\u03b3\u03ad\u03c2 \u0395\u03c0\u03b9\u03c3\u03c4\u03ae\u03bc\u03b7\u03c2 \u03c4\u03c9\u03bd \u0394\u03b5\u03b4\u03bf\u03bc\u03ad\u03bd\u03c9\u03bd \u03ba\u03b1\u03b9 \u03a4\u03b5\u03c7\u03bd\u03b7\u03c4\u03ae\u03c2 \u039d\u03bf\u03b7\u03bc\u03bf\u03c3\u03cd\u03bd\u03b7\u03c2\\paperpilot\\reports\\ragas_v2_20260519-233953.csv",
+  "timestamp": "20260519-233953"
+}
