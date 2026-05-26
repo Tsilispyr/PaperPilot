@@ -115,7 +115,58 @@ ENVEOF
     ok ".env δημιουργήθηκε"
 fi
 
-#  Βήμα 1: Επιλογή παρόχου 
+# ========= Data auto-download (first run) =========
+_gdrive_dl() {
+    # _gdrive_dl FILE_ID OUTPUT_PATH
+    local fid="$1" out="$2"
+    curl -L --progress-bar \
+        "https://drive.usercontent.google.com/download?id=${fid}&export=download&authuser=0&confirm=t" \
+        -o "$out"
+}
+
+QDRANT_DIR="$ROOT/data/qdrant_storage"
+if [[ ! -d "$QDRANT_DIR" ]] || [[ -z "$(ls -A "$QDRANT_DIR" 2>/dev/null)" ]]; then
+    echo "${B} Βήμα 0: Κατέβασμα δεδομένων (πρώτη εκκίνηση) ${R}"
+    echo ""
+    command -v curl &>/dev/null || die "curl δεν βρέθηκε."
+    mkdir -p "$ROOT/data"
+
+    echo "  Qdrant vector index (~69 MB)..."
+    _gdrive_dl "1sdykBfHEJlHrefgspMg7MPZgl0oSHtV1" "$ROOT/data/paperpilot_qdrant.tar.gz" \
+        || die "Αποτυχια κατεβασματος Qdrant data."
+    tar -xzf "$ROOT/data/paperpilot_qdrant.tar.gz" -C "$ROOT/" \
+        || die "Αποτυχια εξαγωγης Qdrant data."
+    rm "$ROOT/data/paperpilot_qdrant.tar.gz"
+    ok "Qdrant data εξηχθη"
+
+    echo "  Raw PDFs (~83 MB)..."
+    _gdrive_dl "1onUxHJjsj6Z54HDTTVESiEQFlIMmgQI3" "$ROOT/data/paperpilot_raw.tar.gz" \
+        || die "Αποτυχια κατεβασματος raw PDFs."
+    tar -xzf "$ROOT/data/paperpilot_raw.tar.gz" -C "$ROOT/" \
+        || die "Αποτυχια εξαγωγης raw PDFs."
+    rm "$ROOT/data/paperpilot_raw.tar.gz"
+    ok "Raw PDFs εξηχθησαν"
+
+    echo "  Processed Markdown (~1.2 MB)..."
+    _gdrive_dl "1eTC8Hu5jLpTuUhcsVA2sbP9sAGAYc4Vv" "$ROOT/data/paperpilot_processed.tar.gz" \
+        || die "Αποτυχια κατεβασματος processed data."
+    tar -xzf "$ROOT/data/paperpilot_processed.tar.gz" -C "$ROOT/" \
+        || die "Αποτυχια εξαγωγης processed data."
+    rm "$ROOT/data/paperpilot_processed.tar.gz"
+    ok "Processed Markdown εξηχθη"
+
+    echo "  Embedding cache (~58 MB)..."
+    _gdrive_dl "1tYEePBFIXxRNr8ocq02AXS8lqhKp3GVa" "$ROOT/data/paperpilot_cache.tar.gz" \
+        || die "Αποτυχια κατεβασματος cache."
+    tar -xzf "$ROOT/data/paperpilot_cache.tar.gz" -C "$ROOT/" \
+        || die "Αποτυχια εξαγωγης cache."
+    rm "$ROOT/data/paperpilot_cache.tar.gz"
+    ok "Cache εξηχθη"
+
+    echo ""
+fi
+
+#  Βήμα 1: Επιλογή παρόχου
 echo "${B} Βήμα 1: Επιλογή AI παρόχου ─${R}"
 echo ""
 echo "  1)  OpenAI   │ gpt-4.1-mini · text-embedding-3-small"
