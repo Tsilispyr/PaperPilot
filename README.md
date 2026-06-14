@@ -32,7 +32,19 @@ After setup, services are available at:
 | Qdrant (vector DB) | http://localhost:6333 |
 | MinIO (storage) | http://localhost:9091 |
 
+PaperPilot Chat UI login:
+
+| Role | Username | Password |
+|---|---|---|
+| Admin | `paperpilot` | `research2026` |
+| Guest (free access) | `guest` | *(any)* |
+| New user | *(choose, min 3 chars)* | *(choose, min 6 chars)* |
+
+First login with a new username auto-registers the account. Returning users log in with the same credentials.
+
 Langfuse credentials: `admin@paperpilot.local` / `PaperPilot2026!` (pre-configured, no setup needed).
+
+MinIO credentials: `minio` / `miniosecret`
 
 ### First run - ingest papers
 
@@ -120,30 +132,38 @@ data/processed/*.md + *.meta.json
 
 ## Evaluation Results
 
-### RAGAS (retrieval + generation quality)
+### RAGAS (retrieval + generation quality, n=84)
 
-| Metric | v1 (n=83) | v2 (n=83) | v3 (n=84) |
-|---|---|---|---|
-| Context Precision | 0.163 | 0.190 | **0.211** |
-| Context Recall | 0.354 | 0.363 | **0.378** |
-| Faithfulness | 0.441 | 0.443 | **0.456** |
-| Answer Relevancy | 0.579 | 0.598 | **0.612** |
-
-### Tool Call Accuracy
-
-| Version | Overall | Definitional | Numerical | Out-of-context |
-|---|---|---|---|---|
-| v1 | 0.655 | 1.00 | 0.80 | 0.56 |
-| v2 | 0.679 | 1.00 | 0.80 | 0.56 |
-| v3 | **0.702** | 1.00 | **0.90** | **0.61** |
-
-### HAIC Evaluation (LLM-as-judge, n=84)
+Overall scores are OOC-diluted: 59/84 questions are out-of-context (agent refuses → CP≈0). In-context only (25 Qs): v3 CP=0.558, CR=0.590, F=0.647.
 
 | Metric | v1 | v2 | v3 |
 |---|---|---|---|
-| Mean Judge Score (1-5) | 3.21 | 3.48 | **3.79** |
-| Accept Rate | 0.67 | 0.71 | **0.79** |
-| Efficiency Score | 0.76 | 0.82 | **0.87** |
+| Context Precision | 0.163 | **0.190** | 0.166 |
+| Context Recall | 0.354 | 0.363 | **0.455** |
+| Faithfulness | **0.306** | 0.292 | 0.284 |
+| Answer Relevancy | **0.477** | 0.438 | 0.335 |
+
+### Tool Call Accuracy (n=84)
+
+v1 uses tools for OOC questions (incorrect), inflating its overall score. v2/v3 correctly refuse tools for OOC (TCA=0 for OOC), which is the right behavior.
+
+| Version | Overall | Definitional | Numerical | Out-of-context |
+|---|---|---|---|---|
+| v1 | **0.619** | 1.00 | 1.00 | 0.458 |
+| v2 | 0.298 | 1.00 | 1.00 | 0.000 |
+| v3 | 0.298 | 1.00 | 1.00 | 0.000 |
+
+### HAIC Evaluation
+
+**v1** (4-axis scoring, n=45): Helpfulness=3.76, Trust=2.82, Effort Saved=3.31, Harm=1.07
+
+**v2/v3** (LLM-as-judge, n=84) - formats are incompatible, do not compare v1 vs v2/v3 directly:
+
+| Metric | v2 | v3 |
+|---|---|---|
+| Mean Judge Score (1-5) | 2.583 | **4.024** |
+| Accept Rate | 0.464 | **0.786** |
+| Efficiency Score | 1.0 | 1.0 |
 
 Full results and charts: [`reports/`](reports/)
 

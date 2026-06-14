@@ -22,7 +22,7 @@ logger = logging.getLogger(__name__)
 # ArXiv rate-limits aggressive downloaders; 5s keeps us well under the limit.
 _DOWNLOAD_DELAY = 5
 
-# Minimum valid PDF size — anything smaller is a truncated/error response.
+# Minimum valid PDF size - anything smaller is a truncated/error response.
 _MIN_PDF_BYTES = 10_000
 
 
@@ -54,7 +54,7 @@ def _download_pdf(result: arxiv.Result, pdf_path: Path) -> None:
     if size < _MIN_PDF_BYTES:
         if pdf_path.exists():
             pdf_path.unlink()
-        raise RuntimeError(f"PDF too small ({size} bytes) — likely truncated or error page")
+        raise RuntimeError(f"PDF too small ({size} bytes) - likely truncated or error page")
 
 
 def _safe_paper_id(entry_id: str) -> str:
@@ -119,7 +119,7 @@ def fetch_corpus(max_papers: int | None = None) -> int:
             seed_search = arxiv.Search(id_list=seed_ids)
             seed_results = _fetch_results(client, seed_search)
         except Exception as exc:
-            logger.warning("Seed fetch failed: %s — continuing without seeds.", exc)
+            logger.warning("Seed fetch failed: %s - continuing without seeds.", exc)
             seed_results = []
         for result in seed_results:
             paper_id = _safe_paper_id(result.entry_id)
@@ -131,7 +131,7 @@ def fetch_corpus(max_papers: int | None = None) -> int:
                 logger.debug("Seed already on disk: %s", paper_id)
                 continue
             try:
-                logger.info("[seed] %s — %s", paper_id, result.title[:80])
+                logger.info("[seed] %s - %s", paper_id, result.title[:80])
                 _download_pdf(result, pdf_path)
                 _write_meta(result, paper_id, query="seed")
                 fetched += 1
@@ -156,7 +156,7 @@ def fetch_corpus(max_papers: int | None = None) -> int:
         try:
             results = _fetch_results(client, search)
         except Exception as exc:
-            logger.warning("Query '%s' failed after retries: %s — skipping.", q[:60], exc)
+            logger.warning("Query '%s' failed after retries: %s - skipping.", q[:60], exc)
             continue
 
         for result in results:
@@ -176,7 +176,7 @@ def fetch_corpus(max_papers: int | None = None) -> int:
                 logger.debug("Already have %s", paper_id)
                 continue
             try:
-                logger.info("[%d/%d] %s — %s", fetched + 1, target_total, paper_id, result.title[:80])
+                logger.info("[%d/%d] %s - %s", fetched + 1, target_total, paper_id, result.title[:80])
                 _download_pdf(result, pdf_path)
                 _write_meta(result, paper_id, query=q)
                 fetched += 1

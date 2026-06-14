@@ -1,0 +1,70 @@
+{
+  "artifact_schema": "haic.decisions_artifact.v1",
+  "schema_version": "haic.decisions.v1",
+  "session_id": "b0f545c9-baf7-48ab-8456-e2e1eeb42f00",
+  "run_id": "d6f43b32-be09-4cbf-bc7e-440b43872f31",
+  "meta": {
+    "pilot_tag": "paperpilot-eval",
+    "application": {
+      "name": "paperpilot",
+      "version": "0.1.0",
+      "mode": "eval"
+    },
+    "ai_system": {
+      "model_name": "paperpilot",
+      "model_type": "rag-agent",
+      "model_version": "v2"
+    },
+    "task": {
+      "name": "Research Q&A",
+      "description": "NLP/LLM/RAG paper questions"
+    }
+  },
+  "decisions": [
+    {
+      "schema_version": "haic.decisions.v1",
+      "seq": 1,
+      "t": 1781437538.8220003,
+      "actor_type": "human",
+      "action": "query",
+      "object_id": "s001_q1",
+      "duration_s": 5.0,
+      "latency_ms": null,
+      "correct": null,
+      "payload": {
+        "session": 1,
+        "turn": 1
+      }
+    },
+    {
+      "schema_version": "haic.decisions.v1",
+      "seq": 2,
+      "t": 1781437550.8337758,
+      "actor_type": "ai",
+      "action": "retrieve",
+      "object_id": "s001_q1",
+      "duration_s": null,
+      "latency_ms": 7907.702445983887,
+      "correct": null,
+      "payload": {
+        "session": 1,
+        "turn": 1
+      }
+    },
+    {
+      "schema_version": "haic.decisions.v1",
+      "seq": 3,
+      "t": 1781437550.8360307,
+      "actor_type": "ai",
+      "action": "respond",
+      "object_id": "s001_q1",
+      "duration_s": null,
+      "latency_ms": 12009.163618087769,
+      "correct": null,
+      "payload": {
+        "session": 1,
+        "turn": 1
+      }
+    }
+  ]
+}

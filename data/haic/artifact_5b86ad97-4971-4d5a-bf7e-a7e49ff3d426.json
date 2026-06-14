@@ -1,0 +1,85 @@
+{
+  "artifact_schema": "haic.decisions_artifact.v1",
+  "schema_version": "haic.decisions.v1",
+  "session_id": "5b86ad97-4971-4d5a-bf7e-a7e49ff3d426",
+  "run_id": "c685253f-dd5b-434f-9ed3-27994c5e05fe",
+  "meta": {
+    "pilot_tag": "paperpilot-eval",
+    "application": {
+      "name": "paperpilot",
+      "version": "0.1.0",
+      "mode": "eval"
+    },
+    "ai_system": {
+      "model_name": "paperpilot",
+      "model_type": "rag-agent",
+      "model_version": "v2"
+    },
+    "task": {
+      "name": "Research Q&A",
+      "description": "NLP/LLM/RAG paper questions"
+    }
+  },
+  "decisions": [
+    {
+      "schema_version": "haic.decisions.v1",
+      "seq": 1,
+      "t": 1781437632.4937096,
+      "actor_type": "human",
+      "action": "query",
+      "object_id": "s001_q1",
+      "duration_s": 5.0,
+      "latency_ms": null,
+      "correct": null,
+      "payload": {
+        "session": 1,
+        "turn": 1
+      }
+    },
+    {
+      "schema_version": "haic.decisions.v1",
+      "seq": 2,
+      "t": 1781437641.1353738,
+      "actor_type": "ai",
+      "action": "respond",
+      "object_id": "s001_q1",
+      "duration_s": null,
+      "latency_ms": 8638.994216918945,
+      "correct": null,
+      "payload": {
+        "session": 1,
+        "turn": 1
+      }
+    },
+    {
+      "schema_version": "haic.decisions.v1",
+      "seq": 3,
+      "t": 1781437661.0990272,
+      "actor_type": "human",
+      "action": "query",
+      "object_id": "s001_q2",
+      "duration_s": 5.0,
+      "latency_ms": null,
+      "correct": null,
+      "payload": {
+        "session": 1,
+        "turn": 2
+      }
+    },
+    {
+      "schema_version": "haic.decisions.v1",
+      "seq": 4,
+      "t": 1781437664.4523168,
+      "actor_type": "ai",
+      "action": "respond",
+      "object_id": "s001_q2",
+      "duration_s": null,
+      "latency_ms": 3341.484785079956,
+      "correct": null,
+      "payload": {
+        "session": 1,
+        "turn": 2
+      }
+    }
+  ]
+}

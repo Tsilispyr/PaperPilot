@@ -50,6 +50,8 @@ data/cache.db
 data/cache.db-*
 *.sqlite
 *.sqlite-journal
+data/*.tar.gz
+data/.hf_cache/
 
 # --- Logs / outputs ---
 logs/
@@ -65,7 +67,7 @@ _dev/
 _archive/
 
 # --- Reports we DO commit (eval evidence)
-# reports/ — keep, don't ignore
+# reports/ - keep, don't ignore
 
 # --- Qdrant / Langfuse bind-mount data (gitignore the dirs, not data/ itself) ---
 data/qdrant_storage/

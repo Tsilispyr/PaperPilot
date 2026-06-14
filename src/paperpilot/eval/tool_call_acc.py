@@ -1,4 +1,4 @@
-"""Tool Call Accuracy — agentic metric.
+"""Tool Call Accuracy - agentic metric.
 
 Definition (project-internal):
   For each golden question, define the *expected tool sequence* based on the question category:
@@ -63,7 +63,7 @@ def _score(expected: list[str], actual: list[str]) -> float:
 def run_tool_call_acc(version: str = "v2") -> Path:
     # Pre-load native extensions in the main thread before LangGraph spawns worker threads.
     # pyarrow (via sentence_transformers → sklearn → pandas) cannot be safely imported
-    # from concurrent threads on Windows — doing so causes a DLL race → access violation.
+    # from concurrent threads on Windows - doing so causes a DLL race → access violation.
     import sentence_transformers  # noqa: F401
 
     golden = load_golden_set()

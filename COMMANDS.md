@@ -152,14 +152,6 @@ python -m paperpilot.mcp.server
 
 ## 5. Evaluation
 
-### Generate golden question set
-
-```bash
-make golden   # LLM-generate candidate Qs -> data/golden/golden_set.jsonl
-```
-
-Then manually curate `data/golden/golden_set.jsonl`.
-
 ### RAGAS evaluation
 
 ```bash

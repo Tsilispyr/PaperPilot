@@ -13,11 +13,6 @@ from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
-        param($m)
-        $prefix = $m.Groups[1].Value
-        $label = $m.Groups[3].Value.Trim()
-        if ($label -ne '') { "$prefix--- $label ---" } else { "${prefix}---" }
-    
 ROOT_DIR = Path(__file__).resolve().parents[2]   # paperpilot/
 DATA_DIR = ROOT_DIR / "data"
 RAW_DIR = DATA_DIR / "raw"
@@ -83,7 +78,7 @@ class Settings(BaseSettings):
     arxiv_to_date: str = "2026-04-30"
     # Comma-separated ArXiv IDs to always fetch regardless of queries.
     # Used for foundational papers whose titles don't match our query terms
-    # (e.g. HyDE = "Precise Zero-Shot Dense Retrieval..." — ti:HyDE finds nothing).
+    # (e.g. HyDE = "Precise Zero-Shot Dense Retrieval..." - ti:HyDE finds nothing).
     arxiv_seed_ids: str = (
         "2212.10496,"   # HyDE
         "2210.03629,"   # ReAct

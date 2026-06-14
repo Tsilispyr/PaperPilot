@@ -20,11 +20,6 @@ app.add_typer(ops_app, name="ops")
 
 
 
-        param($m)
-        $prefix = $m.Groups[1].Value
-        $label = $m.Groups[3].Value.Trim()
-        if ($label -ne '') { "$prefix--- $label ---" } else { "${prefix}---" }
-    
 @ingest_app.command("fetch")
 def ingest_fetch(
     max_papers: int = typer.Option(None, help="Override settings.arxiv_max_papers."),
@@ -60,11 +55,6 @@ def ingest_index(
 
 
 
-        param($m)
-        $prefix = $m.Groups[1].Value
-        $label = $m.Groups[3].Value.Trim()
-        if ($label -ne '') { "$prefix--- $label ---" } else { "${prefix}---" }
-    
 @eval_app.command("golden-gen")
 def eval_golden_gen(n: int = typer.Option(50, help="Candidate questions to generate.")) -> None:
     """LLM-generate candidate golden Qs into data/golden/candidates.jsonl for human review."""
@@ -111,11 +101,6 @@ def eval_haic(version: str = typer.Option("v2")) -> None:
 
 
 
-        param($m)
-        $prefix = $m.Groups[1].Value
-        $label = $m.Groups[3].Value.Trim()
-        if ($label -ne '') { "$prefix--- $label ---" } else { "${prefix}---" }
-    
 @serve_app.command("ui")
 def serve_ui(port: int = 8000) -> None:
     """Hint: prefer `make ui` (which calls `chainlit run ...`)."""
@@ -134,18 +119,13 @@ def serve_mcp() -> None:
 
 
 
-        param($m)
-        $prefix = $m.Groups[1].Value
-        $label = $m.Groups[3].Value.Trim()
-        if ($label -ne '') { "$prefix--- $label ---" } else { "${prefix}---" }
-    
 @app.command("ask")
 def ask(
     question: str = typer.Argument(..., help="Question to ask the agent."),
     version: str = typer.Option("v2", help="v1, v2, or v3."),
     show_trace: bool = typer.Option(False, "--trace", help="Print intermediate tool calls."),
 ) -> None:
-    """One-shot Q&A from the terminal — handy for smoke-testing without the UI."""
+    """One-shot Q&A from the terminal - handy for smoke-testing without the UI."""
     if version not in ("v1", "v2", "v3"):
         raise typer.BadParameter("version must be v1, v2, or v3")
     from paperpilot.agent.graph import run_agent
@@ -162,7 +142,7 @@ def ask(
 
 @app.command("compare")
 def compare(question: str = typer.Argument(..., help="Question to ask both v1 and v2.")) -> None:
-    """Run the same question against v1 and v2 — side-by-side for the demo + report."""
+    """Run the same question against v1 and v2 - side-by-side for the demo + report."""
     from paperpilot.agent.graph import run_agent
 
     out: dict[str, dict] = {}
@@ -178,11 +158,6 @@ def compare(question: str = typer.Argument(..., help="Question to ask both v1 an
 
 
 
-        param($m)
-        $prefix = $m.Groups[1].Value
-        $label = $m.Groups[3].Value.Trim()
-        if ($label -ne '') { "$prefix--- $label ---" } else { "${prefix}---" }
-    
 @ops_app.command("doctor")
 def ops_doctor() -> None:
     """Ping every external dependency and report green/red."""

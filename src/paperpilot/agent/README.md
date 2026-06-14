@@ -60,20 +60,20 @@ Both default to the provider's default model if empty. Set in `.env`.
 
 ```
 START
-  │
+  |
   ▼
-planner_node  ──(out_of_context)──► synthesizer_node ──► END
-  │
-  │ (quick_qa | deep_analysis)
+planner_node  --(out_of_context)--► synthesizer_node --► END
+  |
+  | (quick_qa | deep_analysis)
   ▼
 researcher_node
-  │  asyncio.gather:
-  │   ├─ rag_retrieve_impl(rag_query)
-  │   └─ arxiv_search_impl(arxiv_query)   ← only if needs_arxiv=True
-  │
+  |  asyncio.gather:
+  |   +- rag_retrieve_impl(rag_query)
+  |   +- arxiv_search_impl(arxiv_query)   ← only if needs_arxiv=True
+  |
   ▼
 synthesizer_node
-  │
+  |
   ▼
 END  →  {"answer": str, "tool_calls": list}
 ```

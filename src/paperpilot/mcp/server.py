@@ -30,7 +30,7 @@ def rag_retrieve(
     top_k: int = 4,
     version: str = "v2",
 ) -> str:
-    """Semantic search over PaperPilot's indexed corpus of NLP/LLM/RAG/Agents papers (~2023–2026).
+    """Semantic search over PaperPilot's indexed corpus of NLP/LLM/RAG/Agents papers (~2023-2026).
 
     Returns top-k chunks (JSON list) with title, authors, year, section, text, source URL,
     and relevance score. Optional filters: year_from, year_to, primary_category, version (v1|v2).

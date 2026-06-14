@@ -14,7 +14,10 @@ edit_message = false
 auto_tag_thread = true
 
 [features.spontaneous_file_upload]
-enabled = false
+enabled = true
+accept = ["application/pdf"]
+max_size_mb = 50
+max_files = 5
 
 [features.audio]
 enabled = false

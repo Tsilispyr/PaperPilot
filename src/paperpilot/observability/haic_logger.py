@@ -129,11 +129,6 @@ class HAICLogger:
 
 
 
-        param($m)
-        $prefix = $m.Groups[1].Value
-        $label = $m.Groups[3].Value.Trim()
-        if ($label -ne '') { "$prefix--- $label ---" } else { "${prefix}---" }
-    
 
 def compute_haic_metrics(artifact: dict, baseline_s: float = 7500.0, rt_max_s: float = 30.0) -> dict:
     """
@@ -163,7 +158,7 @@ def compute_haic_metrics(artifact: dict, baseline_s: float = 7500.0, rt_max_s: f
     rejected = sum(1 for d in decisions if d["action"] == "reject")
     Tr = accepted / (accepted + rejected) if (accepted + rejected) > 0 else 0.0
 
-    # HCL — based on ai:respond latency
+    # HCL - based on ai:respond latency
     respond_latencies = [
         d["latency_ms"] / 1000.0
         for d in decisions
@@ -172,11 +167,11 @@ def compute_haic_metrics(artifact: dict, baseline_s: float = 7500.0, rt_max_s: f
     mean_rt = sum(respond_latencies) / len(respond_latencies) if respond_latencies else rt_max_s / 2
     HCL = 1.0 - min(mean_rt / rt_max_s, 1.0)
 
-    # F — events per minute
+    # F - events per minute
     dur_min = t_actual / 60.0
     F = len(decisions) / dur_min if dur_min > 0 else 0.0
 
-    # D — mean human decision duration
+    # D - mean human decision duration
     human_durations = [
         d["duration_s"]
         for d in decisions
@@ -185,7 +180,7 @@ def compute_haic_metrics(artifact: dict, baseline_s: float = 7500.0, rt_max_s: f
     ]
     D = sum(human_durations) / len(human_durations) if human_durations else 0.0
 
-    # A — adaptability (early vs late 20% of sessions by session number)
+    # A - adaptability (early vs late 20% of sessions by session number)
     sessions: dict[int, list[dict]] = {}
     for d in decisions:
         snum = d.get("payload", {}).get("session", 1)

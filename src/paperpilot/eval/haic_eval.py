@@ -1,4 +1,4 @@
-"""HAIC evaluation — proper Human-AI Collaboration metrics (L9-L10).
+"""HAIC evaluation - proper Human-AI Collaboration metrics (L9-L10).
 
 Implements EL, Tr, HCL, F, A, D, EfficiencyScore from the haic.decisions.v1 schema.
 
@@ -75,7 +75,7 @@ def _judge_score(question: str, reference: str, answer: str, is_ooc: bool = Fals
     """Call the judge LLM; return (score, reason). Cached.
 
     For OOC questions uses a separate prompt that rewards correct refusal (score=5)
-    rather than helpfulness — preventing the perverse incentive of hallucinating an answer.
+    rather than helpfulness - preventing the perverse incentive of hallucinating an answer.
     """
     cache = get_cache()
     if is_ooc:
@@ -112,7 +112,7 @@ def _judge_score(question: str, reference: str, answer: str, is_ooc: bool = Fals
         cache.set_judge(settings.openai_judge_model, prompt, data)
         return float(data.get("score", 3)), data.get("reason", "")
     except Exception as exc:
-        logger.warning("HAIC judge failed: %s — defaulting to neutral score 3", exc)
+        logger.warning("HAIC judge failed: %s - defaulting to neutral score 3", exc)
         return 3.0, f"judge-error: {exc}"
 
 
@@ -213,7 +213,7 @@ def run_haic(version: str = "v2") -> Path:
             "mean_judge_score": sum(r["judge_score"] for r in sub) / max(1, len(sub)),
         }
 
-    # In-context vs OOC split — OOC uses a different judge scale (refusal=5, hallucination=1)
+    # In-context vs OOC split - OOC uses a different judge scale (refusal=5, hallucination=1)
     # so reporting them together distorts the overall mean; keep them separate.
     def _ctx_stats(subset: list[dict]) -> dict:
         if not subset:

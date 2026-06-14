@@ -1,4 +1,4 @@
-"""Tool Call Accuracy scoring rubric — synthetic traces, no network."""
+"""Tool Call Accuracy scoring rubric - synthetic traces, no network."""
 from __future__ import annotations
 
 from paperpilot.eval.tool_call_acc import _score
@@ -20,7 +20,7 @@ def test_missing_required_tool():
 
 
 def test_wrong_tool_only():
-    # arxiv_search alone — never called rag_retrieve → 0.0
+    # arxiv_search alone - never called rag_retrieve → 0.0
     assert _score(["rag_retrieve"], ["arxiv_search"]) == 0.0
 
 
@@ -31,7 +31,7 @@ def test_ooc_expected_sequence():
 
 def test_ooc_wrong_order():
     expected = ["rag_retrieve", "arxiv_search"]
-    # Both tools called but arxiv first — same set, wrong order → 0.5
+    # Both tools called but arxiv first - same set, wrong order → 0.5
     assert _score(expected, ["arxiv_search", "rag_retrieve"]) == 0.5
 
 

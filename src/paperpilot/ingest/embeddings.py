@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 
 class EmbeddingProvider:
-    """Pluggable embedding provider — supports OpenAI today, easy to add Ollama."""
+    """Pluggable embedding provider - supports OpenAI today, easy to add Ollama."""
 
     def __init__(self) -> None:
         self.cache = get_cache()

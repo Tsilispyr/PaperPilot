@@ -5,7 +5,7 @@ Three evaluation frameworks as required by the course spec.
 ## Files
 
 ### ragas_eval.py
-**RAGAS** — reference-free evaluation of the full RAG pipeline.
+**RAGAS** - reference-free evaluation of the full RAG pipeline.
 
 Runs the agent on every question in `data/golden/golden_set.jsonl` and scores:
 
@@ -23,7 +23,7 @@ paperpilot eval ragas --version v2
 ```
 
 ### tool_call_acc.py
-**Tool Call Accuracy** — did the agent call the right tool(s)?
+**Tool Call Accuracy** - did the agent call the right tool(s)?
 
 Compares actual tool calls against `expected_tools` in the golden set.
 Score = 1.0 if actual ⊇ expected, else 0.0 (partial credit not given).
@@ -35,7 +35,7 @@ paperpilot eval tool-call-acc --version v2
 ```
 
 ### haic_eval.py
-**HAIC** — Human-AI Collaboration evaluation.
+**HAIC** - Human-AI Collaboration evaluation.
 
 Simulates the interaction loop (query → retrieve → respond) and scores on:
 

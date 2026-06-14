@@ -50,17 +50,9 @@ def _patch_langchain_compat() -> None:
 
 @lru_cache
 def get_langfuse_client():
-    if "langfuse-web" in settings.langfuse_host:
-        logger.warning(
-            "LANGFUSE_HOST=%s is a Docker-internal address — unreachable from the host. "
-            "Set LANGFUSE_HOST=http://localhost:3001 in .env for local pipeline runs.",
-            settings.langfuse_host,
-        )
-        return None
-
     if not (settings.langfuse_public_key and settings.langfuse_secret_key):
         logger.warning(
-            "Langfuse keys not set — tracing disabled. "
+            "Langfuse keys not set - tracing disabled. "
             "Visit %s to log in and create keys, then set LANGFUSE_PUBLIC_KEY / LANGFUSE_SECRET_KEY in .env",
             settings.langfuse_host,
         )
@@ -72,18 +64,18 @@ def get_langfuse_client():
             secret_key=settings.langfuse_secret_key,
             host=settings.langfuse_host,
         )
-        # Verify credentials before returning — prevents 500-spam on wrong/placeholder keys.
+        # Verify credentials before returning - prevents 500-spam on wrong/placeholder keys.
         try:
             if not client.auth_check():
                 logger.warning(
-                    "Langfuse auth check failed — tracing disabled. "
+                    "Langfuse auth check failed - tracing disabled. "
                     "Check LANGFUSE_PUBLIC_KEY / LANGFUSE_SECRET_KEY in .env "
                     "(log in at %s, create an API key, paste it in .env)",
                     settings.langfuse_host,
                 )
                 return None
         except Exception as auth_exc:
-            logger.warning("Langfuse auth check error (%s) — tracing disabled.", auth_exc)
+            logger.warning("Langfuse auth check error (%s) - tracing disabled.", auth_exc)
             return None
         logger.info("Langfuse client → %s", settings.langfuse_host)
         return client
@@ -118,12 +110,25 @@ def get_callback_handler(
         os.environ["LANGFUSE_SECRET_KEY"] = settings.langfuse_secret_key
         os.environ["LANGFUSE_HOST"] = settings.langfuse_host
         _patch_langchain_compat()
-        from langfuse.callback import CallbackHandler
-        return CallbackHandler(
-            session_id=session_id,
-            user_id=user_id,
-            tags=tags or [],
-        )
+        # Import path and constructor signature changed across Langfuse versions:
+        #   ≤2.x  : langfuse.callback.CallbackHandler(session_id, user_id, tags)
+        #   3-4.x : langfuse.langchain.CallbackHandler(public_key, trace_context)
+        try:
+            from langfuse.langchain import CallbackHandler  # 3.x / 4.x
+        except ImportError:
+            try:
+                from langfuse.langchain import LangfuseCallbackHandler as CallbackHandler  # type: ignore[no-redef]
+            except ImportError:
+                from langfuse.callback import CallbackHandler  # type: ignore[no-redef]  # 2.x
+        # Try old-style kwargs first; fall back to no-arg constructor (4.x)
+        try:
+            return CallbackHandler(
+                session_id=session_id,
+                user_id=user_id,
+                tags=tags or [],
+            )
+        except TypeError:
+            return CallbackHandler()
     except Exception as exc:
         logger.warning("Langfuse CallbackHandler unavailable: %s", exc)
         return None

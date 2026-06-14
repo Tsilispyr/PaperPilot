@@ -1,4 +1,4 @@
-﻿"""Retriever — v1 (pure dense) and v2 (dense + heuristic filter + cross-encoder rerank)."""
+﻿"""Retriever - v1 (pure dense) and v2 (dense + heuristic filter + cross-encoder rerank)."""
 from __future__ import annotations
 
 import logging
@@ -35,15 +35,10 @@ class RetrievedChunk:
     def short_citation(self) -> str:
         a = self.authors[0].split()[-1] if self.authors else "?"
         more = " et al." if len(self.authors) > 1 else ""
-        return f"{a}{more} ({self.year}) — {self.title[:80]}"
+        return f"{a}{more} ({self.year}) - {self.title[:80]}"
 
 
 
-        param($m)
-        $prefix = $m.Groups[1].Value
-        $label = $m.Groups[3].Value.Trim()
-        if ($label -ne '') { "$prefix--- $label ---" } else { "${prefix}---" }
-    
 _YEAR_RX = re.compile(r"\b(20\d{2})\b")
 _CAT_HINTS: dict[str, str] = {
     "cs.cl": "cs.CL", "cs.ai": "cs.AI", "cs.lg": "cs.LG", "cs.ir": "cs.IR",
@@ -70,11 +65,6 @@ def _infer_filters(query: str) -> qm.Filter | None:
 
 
 
-        param($m)
-        $prefix = $m.Groups[1].Value
-        $label = $m.Groups[3].Value.Trim()
-        if ($label -ne '') { "$prefix--- $label ---" } else { "${prefix}---" }
-    
 class Retriever:
     def __init__(self, version: str):
         self.version = version
@@ -105,7 +95,7 @@ class Retriever:
             )
             return [self._to_chunk(h) for h in result.points]
 
-        # v2 / v3 — dense over-fetch, then rerank
+        # v2 / v3 - dense over-fetch, then rerank
         k_dense = settings.top_k_v2_dense
         k_final = top_k or settings.top_k_v2_rerank
         if filters is None and auto_filter:
@@ -140,11 +130,6 @@ class Retriever:
 
 
 
-        param($m)
-        $prefix = $m.Groups[1].Value
-        $label = $m.Groups[3].Value.Trim()
-        if ($label -ne '') { "$prefix--- $label ---" } else { "${prefix}---" }
-    
 _retrievers: dict[str, Retriever] = {}
 
 

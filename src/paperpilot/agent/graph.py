@@ -1,13 +1,13 @@
-﻿"""LangGraph Multi-Agent Orchestrator — Planner → Researcher → Synthesizer.
+﻿"""LangGraph Multi-Agent Orchestrator - Planner → Researcher → Synthesizer.
 
 Architecture (Phase 2):
-  ┌──────────┐     ┌────────────┐     ┌─────────────┐
-  │  Planner │────▶│ Researcher │────▶│ Synthesizer │
-  │ (fast LM)│     │ (fast LM)  │     │ (strong LM) │
-  └──────────┘     └────────────┘     └─────────────┘
-       │                                      ▲
-       │ out_of_context                       │
-       └──────────────────────────────────────┘
+  +==========+     +============+     +=============+
+  |  Planner |====▶| Researcher |====▶| Synthesizer |
+  | (fast LM)|     | (fast LM)  |     | (strong LM) |
+  +==========+     +============+     +=============+
+       |                                      ▲
+       | out_of_context                       |
+       +======================================+
 
 Planner:     Classifies intent; emits a structured JSON search plan.
 Researcher:  Runs rag_retrieve + arxiv_search concurrently (asyncio.gather).
@@ -47,11 +47,6 @@ logger = logging.getLogger(__name__)
 
 
 
-        param($m)
-        $prefix = $m.Groups[1].Value
-        $label = $m.Groups[3].Value.Trim()
-        if ($label -ne '') { "$prefix--- $label ---" } else { "${prefix}---" }
-    
 
 class AgentState(TypedDict):
     user_query: str
@@ -61,14 +56,10 @@ class AgentState(TypedDict):
     tool_calls: Annotated[list[dict], operator.add]     # accumulated for eval scripts
     messages: Annotated[list, add_messages]             # LangChain message history
     answer: str                                         # final output
+    session_chunks: list[dict]                          # user-uploaded PDF chunks (with embeddings)
 
 
 
-        param($m)
-        $prefix = $m.Groups[1].Value
-        $label = $m.Groups[3].Value.Trim()
-        if ($label -ne '') { "$prefix--- $label ---" } else { "${prefix}---" }
-    
 
 class SearchPlan(BaseModel):
     mode: Literal["quick_qa", "deep_analysis", "out_of_context"] = Field(
@@ -81,7 +72,7 @@ class SearchPlan(BaseModel):
     needs_rag: bool = Field(True, description="Search the local Qdrant corpus.")
     needs_arxiv: bool = Field(
         False,
-        description="Search live ArXiv — use only for papers published in the last 3 months.",
+        description="Search live ArXiv - use only for papers published in the last 3 months.",
     )
     rag_query: str = Field("", description="Primary keyword-dense query for vector search.")
     sub_queries: list[str] = Field(
@@ -97,11 +88,6 @@ class SearchPlan(BaseModel):
 
 
 
-        param($m)
-        $prefix = $m.Groups[1].Value
-        $label = $m.Groups[3].Value.Trim()
-        if ($label -ne '') { "$prefix--- $label ---" } else { "${prefix}---" }
-    
 
 def _make_llm(tier: Literal["fast", "strong"]) -> Any:
     """
@@ -151,34 +137,24 @@ def _make_llm(tier: Literal["fast", "strong"]) -> Any:
 
 
 
-        param($m)
-        $prefix = $m.Groups[1].Value
-        $label = $m.Groups[3].Value.Trim()
-        if ($label -ne '') { "$prefix--- $label ---" } else { "${prefix}---" }
-    
 
 _GRAPH_CACHE: dict[str, Any] = {}
 
 
 
-        param($m)
-        $prefix = $m.Groups[1].Value
-        $label = $m.Groups[3].Value.Trim()
-        if ($label -ne '') { "$prefix--- $label ---" } else { "${prefix}---" }
-    
 
 _PLANNER_SYSTEM = """\
-You are the Planner for PaperPilot — an academic assistant covering NLP, LLM, \
+You are the Planner for PaperPilot - an academic assistant covering NLP, LLM, \
 RAG, and AI Agents research papers (corpus: 2020-2026).
 
 Given the user question, output a JSON search plan with these fields:
-  mode        — "quick_qa" | "deep_analysis" | "out_of_context"
-  needs_rag   — true to search the local vector corpus (default: true)
-  needs_arxiv — true ONLY for papers published in the last 3 months (default: false)
-  rag_query   — a short, keyword-dense query optimized for dense vector search
-  sub_queries — for deep_analysis ONLY: 2-3 focused sub-queries, one per facet/paper
-  arxiv_query — a fielded ArXiv query (only when needs_arxiv=true)
-  rationale   — one sentence explaining your choice
+  mode        - "quick_qa" | "deep_analysis" | "out_of_context"
+  needs_rag   - true to search the local vector corpus (default: true)
+  needs_arxiv - true ONLY for papers published in the last 3 months (default: false)
+  rag_query   - a short, keyword-dense query optimized for dense vector search
+  sub_queries - for deep_analysis ONLY: 2-3 focused sub-queries, one per facet/paper
+  arxiv_query - a fielded ArXiv query (only when needs_arxiv=true)
+  rationale   - one sentence explaining your choice
 
 Rules:
 - Default: needs_rag=true, needs_arxiv=false.
@@ -205,16 +181,11 @@ async def planner_node(state: AgentState, config: RunnableConfig) -> dict:
     )
     return {
         "plan": result.model_dump(),
-        "messages": [AIMessage(content=f"[Planner] mode={result.mode} — {result.rationale}")],
+        "messages": [AIMessage(content=f"[Planner] mode={result.mode} - {result.rationale}")],
     }
 
 
 
-        param($m)
-        $prefix = $m.Groups[1].Value
-        $label = $m.Groups[3].Value.Trim()
-        if ($label -ne '') { "$prefix--- $label ---" } else { "${prefix}---" }
-    
 
 _DISTILL_SYSTEM = """\
 You are a research distiller. Given raw retrieved paper chunks, produce a \
@@ -223,7 +194,7 @@ concise bullet-point summary (max 12 bullets, ≤ 25 words each).
 Rules:
 - Include the paper title and year after each fact: (Title, Year)
 - Drop any chunk not directly relevant to the question
-- Output ONLY the bullet list — no preamble, no conclusion, no markdown headers
+- Output ONLY the bullet list - no preamble, no conclusion, no markdown headers
 """
 
 
@@ -231,11 +202,12 @@ async def researcher_node(state: AgentState, config: RunnableConfig) -> dict:
     plan = state["plan"]
     user_query = state["user_query"]
     version = (config.get("configurable") or {}).get("version", "v2")
+    s_chunks = state.get("session_chunks") or []
 
     tool_calls_log: list[dict] = []
     all_chunks: list[dict] = []
 
-    # --- Concurrentretrievalviaasyncio.gather ---
+    # --- Concurrent retrieval via asyncio.gather ---
     async def _run_rag() -> list[dict]:
         sub_qs = plan.get("sub_queries") or []
         primary = plan.get("rag_query") or user_query
@@ -263,11 +235,41 @@ async def researcher_node(state: AgentState, config: RunnableConfig) -> dict:
         tool_calls_log.append({"name": "arxiv_search", "args": {"query": q}})
         return papers
 
+    async def _run_session() -> list[dict]:
+        """Cosine similarity search over user-uploaded PDF chunks."""
+        if not s_chunks:
+            return []
+
+        def _search() -> list[dict]:
+            import numpy as np
+            from paperpilot.ingest.embeddings import EmbeddingProvider
+            query_text = plan.get("rag_query") or user_query
+            q_vec = np.array(EmbeddingProvider().embed([query_text])[0], dtype=np.float32)
+            scored = []
+            for chunk in s_chunks:
+                emb = np.array(chunk["embedding"], dtype=np.float32)
+                norm = np.linalg.norm(q_vec) * np.linalg.norm(emb)
+                score = float(np.dot(q_vec, emb) / norm) if norm > 0 else 0.0
+                scored.append((score, chunk))
+            scored.sort(key=lambda x: x[0], reverse=True)
+            results = []
+            for score, c in scored[:4]:
+                r = {k: v for k, v in c.items() if k != "embedding"}
+                r["score"] = score
+                results.append(r)
+            return results
+
+        results = await asyncio.to_thread(_search)
+        tool_calls_log.append({"name": "session_search", "args": {"n_chunks": len(s_chunks)}})
+        return results
+
     tasks: list[asyncio.Task] = []
     if plan.get("needs_rag", True):
         tasks.append(asyncio.ensure_future(_run_rag()))
     if plan.get("needs_arxiv", False):
         tasks.append(asyncio.ensure_future(_run_arxiv()))
+    if s_chunks:
+        tasks.append(asyncio.ensure_future(_run_session()))
 
     if tasks:
         results = await asyncio.gather(*tasks, return_exceptions=True)
@@ -320,11 +322,6 @@ async def researcher_node(state: AgentState, config: RunnableConfig) -> dict:
 
 
 
-        param($m)
-        $prefix = $m.Groups[1].Value
-        $label = $m.Groups[3].Value.Trim()
-        if ($label -ne '') { "$prefix--- $label ---" } else { "${prefix}---" }
-    
 
 _SYNTHESIZER_SYSTEM = """\
 You are PaperPilot's Synthesizer. Write a comprehensive, well-structured Markdown response.
@@ -340,7 +337,7 @@ Rules:
 
 _OUT_OF_CONTEXT_MSG = (
     "I'm PaperPilot, specialized in NLP, LLM, RAG, and AI Agents research papers "
-    "(corpus: 2020–2026). Your question appears to be outside that scope.\n\n"
+    "(corpus: 2020-2026). Your question appears to be outside that scope.\n\n"
     "Try asking about topics like retrieval-augmented generation, transformer architectures, "
     "evaluation frameworks (RAGAS), or specific papers in the indexed corpus."
 )
@@ -348,8 +345,9 @@ _OUT_OF_CONTEXT_MSG = (
 
 async def synthesizer_node(state: AgentState, config: RunnableConfig) -> dict:
     mode = (state.get("plan") or {}).get("mode", "quick_qa")
+    has_notes = bool((state.get("research_notes") or "").strip())
 
-    if mode == "out_of_context":
+    if mode == "out_of_context" and not has_notes:
         return {
             "answer": _OUT_OF_CONTEXT_MSG,
             "messages": [AIMessage(content=_OUT_OF_CONTEXT_MSG)],
@@ -375,24 +373,15 @@ async def synthesizer_node(state: AgentState, config: RunnableConfig) -> dict:
 
 
 
-        param($m)
-        $prefix = $m.Groups[1].Value
-        $label = $m.Groups[3].Value.Trim()
-        if ($label -ne '') { "$prefix--- $label ---" } else { "${prefix}---" }
-    
 
 def _route_after_planner(state: AgentState) -> Literal["researcher", "synthesizer"]:
-    if (state.get("plan") or {}).get("mode") == "out_of_context":
+    # If user has uploaded files, always search them even for OOC questions
+    if (state.get("plan") or {}).get("mode") == "out_of_context" and not (state.get("session_chunks") or []):
         return "synthesizer"
     return "researcher"
 
 
 
-        param($m)
-        $prefix = $m.Groups[1].Value
-        $label = $m.Groups[3].Value.Trim()
-        if ($label -ne '') { "$prefix--- $label ---" } else { "${prefix}---" }
-    
 
 def build_graph(version: str = "v2"):
     """Compile (and memoize) the multi-agent StateGraph."""
@@ -420,13 +409,8 @@ def build_graph(version: str = "v2"):
 
 
 
-        param($m)
-        $prefix = $m.Groups[1].Value
-        $label = $m.Groups[3].Value.Trim()
-        if ($label -ne '') { "$prefix--- $label ---" } else { "${prefix}---" }
-    
 
-def _initial_state(question: str) -> dict:
+def _initial_state(question: str, session_chunks: Optional[list[dict]] = None) -> dict:
     return {
         "user_query": question,
         "plan": {},
@@ -435,6 +419,7 @@ def _initial_state(question: str) -> dict:
         "tool_calls": [],
         "messages": [],
         "answer": "",
+        "session_chunks": session_chunks or [],
     }
 
 
@@ -476,11 +461,6 @@ async def _ainvoke(
 
 
 
-        param($m)
-        $prefix = $m.Groups[1].Value
-        $label = $m.Groups[3].Value.Trim()
-        if ($label -ne '') { "$prefix--- $label ---" } else { "${prefix}---" }
-    
 
 def run_agent(
     question: str,
@@ -492,13 +472,13 @@ def run_agent(
     """Sync entrypoint for CLI / eval scripts.
 
     Safe to call from both sync contexts (scripts) and existing async loops
-    (e.g. RAGAS eval which internally uses asyncio) — uses a thread when needed.
+    (e.g. RAGAS eval which internally uses asyncio) - uses a thread when needed.
     Returns {"answer": str, "messages": list, "tool_calls": list}.
     """
     coro = _ainvoke(question, version, session_id=session_id, user_id=user_id)
     try:
         asyncio.get_running_loop()
-        # Already inside an event loop — run in a fresh thread to avoid deadlock
+        # Already inside an event loop - run in a fresh thread to avoid deadlock
         import concurrent.futures
         with concurrent.futures.ThreadPoolExecutor(max_workers=1) as pool:
             return pool.submit(asyncio.run, coro).result()
@@ -523,6 +503,7 @@ async def astream_agent(
     *,
     session_id: Optional[str] = None,
     user_id: Optional[str] = None,
+    session_chunks: Optional[list[dict]] = None,
 ) -> AsyncIterator[dict]:
     """Async generator yielding per-node state updates.
 
@@ -532,7 +513,7 @@ async def astream_agent(
     graph = build_graph(version)
     cfg, _ = _build_config(version, session_id, user_id)
     async for update in graph.astream(
-        _initial_state(question),
+        _initial_state(question, session_chunks),
         config=cfg,
         stream_mode="updates",
     ):
@@ -546,7 +527,7 @@ def stream_agent(
     session_id: Optional[str] = None,
     user_id: Optional[str] = None,
 ) -> Iterable[dict]:
-    """Legacy sync streaming shim — prefer astream_agent() for new code.
+    """Legacy sync streaming shim - prefer astream_agent() for new code.
 
     Bridges the async graph into a synchronous generator by running the
     async producer in a background thread with its own event loop.

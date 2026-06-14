@@ -1,4 +1,4 @@
-"""Smoke tests for the two chunkers — no network, no LLM."""
+"""Smoke tests for the two chunkers - no network, no LLM."""
 from __future__ import annotations
 
 from paperpilot.ingest.chunk import FixedSizeChunker, SectionAwareChunker

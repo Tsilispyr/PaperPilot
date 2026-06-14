@@ -24,11 +24,6 @@ logger = logging.getLogger(__name__)
 
 
 
-        param($m)
-        $prefix = $m.Groups[1].Value
-        $label = $m.Groups[3].Value.Trim()
-        if ($label -ne '') { "$prefix--- $label ---" } else { "${prefix}---" }
-    
 class RagRetrieveArgs(BaseModel):
     query: str = Field(..., description="Natural-language question or keywords to search.")
     year_from: Optional[int] = Field(None, description="Earliest publication year (inclusive).")
@@ -104,7 +99,7 @@ def make_rag_retrieve_tool(version: str = "v2") -> StructuredTool:
         name="rag_retrieve",
         description=(
             "Semantic search over PaperPilot's indexed corpus of NLP/LLM/RAG/Agents papers "
-            "(~2023–2026). Returns top-k chunks with paper title, authors, year, section, "
+            "(~2023-2026). Returns top-k chunks with paper title, authors, year, section, "
             "and a relevance score. Use this FIRST for any factual question. "
             "Optional filters: year_from/year_to, primary_category (e.g. 'cs.CL')."
         ),
@@ -113,11 +108,6 @@ def make_rag_retrieve_tool(version: str = "v2") -> StructuredTool:
 
 
 
-        param($m)
-        $prefix = $m.Groups[1].Value
-        $label = $m.Groups[3].Value.Trim()
-        if ($label -ne '') { "$prefix--- $label ---" } else { "${prefix}---" }
-    
 class ArxivSearchArgs(BaseModel):
     query: str = Field(..., description="ArXiv search expression (free text or fielded).")
     max_results: int = Field(5, ge=1, le=10, description="Max papers to return.")

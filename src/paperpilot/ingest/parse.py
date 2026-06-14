@@ -46,7 +46,7 @@ def parse_one(paper_id: str) -> tuple[Path, Path]:
 def parse_corpus() -> int:
     paper_ids = sorted(p.stem for p in RAW_DIR.glob("*.pdf"))
     if not paper_ids:
-        logger.warning("data/raw/ is empty — run `make fetch` first.")
+        logger.warning("data/raw/ is empty - run `make fetch` first.")
         return 0
 
     n_ok = 0

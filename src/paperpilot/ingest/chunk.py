@@ -17,11 +17,6 @@ from paperpilot.ingest.schema import Chunk, PaperMetadata, SectionType
 logger = logging.getLogger(__name__)
 
 
-        param($m)
-        $prefix = $m.Groups[1].Value
-        $label = $m.Groups[3].Value.Trim()
-        if ($label -ne '') { "$prefix--- $label ---" } else { "${prefix}---" }
-    
 _ENC = tiktoken.get_encoding("cl100k_base")
 
 
@@ -30,17 +25,12 @@ def _tok_count(text: str) -> int:
 
 
 def _det_uuid(*parts: str) -> str:
-    """Deterministic UUID5 — Qdrant accepts UUID strings as point ids."""
+    """Deterministic UUID5 - Qdrant accepts UUID strings as point ids."""
     base = "::".join(parts)
     return str(uuid.uuid5(uuid.NAMESPACE_URL, base))
 
 
 
-        param($m)
-        $prefix = $m.Groups[1].Value
-        $label = $m.Groups[3].Value.Trim()
-        if ($label -ne '') { "$prefix--- $label ---" } else { "${prefix}---" }
-    
 SECTION_PATTERNS: list[tuple[re.Pattern, SectionType]] = [
     (re.compile(r"^\s*abstract\b", re.IGNORECASE), "abstract"),
     (re.compile(r"^\s*(introduction|motivation)\b", re.IGNORECASE), "introduction"),
@@ -62,7 +52,7 @@ _STRIP_NUM = re.compile(r"^\d+(\.\d+)*\.?\s+")
 
 
 def _classify_section(title: str) -> SectionType:
-    # pymupdf4llm renders headers as "**1.2 Introduction**" — strip bold markers and
+    # pymupdf4llm renders headers as "**1.2 Introduction**" - strip bold markers and
     # leading numbering so patterns like r"^\s*introduction\b" can match.
     clean = _STRIP_MD.sub("", title).strip()
     clean = _STRIP_NUM.sub("", clean).strip()
@@ -79,11 +69,6 @@ def _arxiv_abs_url(paper_id: str) -> str:
 
 
 
-        param($m)
-        $prefix = $m.Groups[1].Value
-        $label = $m.Groups[3].Value.Trim()
-        if ($label -ne '') { "$prefix--- $label ---" } else { "${prefix}---" }
-    
 class FixedSizeChunker:
     """Sliding window over the full markdown text, ignoring structure."""
 
@@ -124,11 +109,6 @@ class FixedSizeChunker:
 
 
 
-        param($m)
-        $prefix = $m.Groups[1].Value
-        $label = $m.Groups[3].Value.Trim()
-        if ($label -ne '') { "$prefix--- $label ---" } else { "${prefix}---" }
-    
 class SectionAwareChunker:
     """Split on markdown headers; subdivide oversized sections with the same window."""
 
@@ -181,7 +161,7 @@ class SectionAwareChunker:
         idx = 0
         for title, body in self._split_by_headers(text):
             section_type = _classify_section(title)
-            # Skip references entirely — noise for QA over methods/results.
+            # Skip references entirely - noise for QA over methods/results.
             if section_type == "references":
                 continue
             for piece in self._window(body):
@@ -206,11 +186,6 @@ class SectionAwareChunker:
 
 
 
-        param($m)
-        $prefix = $m.Groups[1].Value
-        $label = $m.Groups[3].Value.Trim()
-        if ($label -ne '') { "$prefix--- $label ---" } else { "${prefix}---" }
-    
 _TABLE_LINE_RX = re.compile(r"^\s*\|")
 
 

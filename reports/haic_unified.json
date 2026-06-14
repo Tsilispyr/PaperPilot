@@ -1,0 +1,116 @@
+{
+  "generated_by": "haic_unified.py",
+  "v1_aggregate": {
+    "helpfulness": 3.7555555555555555,
+    "trust_calibration": 2.8222222222222224,
+    "effort_saved": 3.311111111111111,
+    "harm_potential": 1.0666666666666667
+  },
+  "v2_aggregate": {
+    "mean_judge_score": 2.583,
+    "accept_rate": 0.464,
+    "n": 84
+  },
+  "v3_aggregate": {
+    "mean_judge_score": 4.024,
+    "accept_rate": 0.786,
+    "n": 84
+  },
+  "by_category": {
+    "definitional": {
+      "n": 5,
+      "v2": {
+        "mean_judge_score": 4.8,
+        "accept_rate": 1.0
+      },
+      "v3": {
+        "mean_judge_score": 4.2,
+        "accept_rate": 1.0
+      },
+      "delta": {
+        "mean_judge_score": -0.6,
+        "accept_rate": 0.0
+      }
+    },
+    "comparative": {
+      "n": 5,
+      "v2": {
+        "mean_judge_score": 3.6,
+        "accept_rate": 1.0
+      },
+      "v3": {
+        "mean_judge_score": 2.6,
+        "accept_rate": 0.6
+      },
+      "delta": {
+        "mean_judge_score": -1.0,
+        "accept_rate": -0.4
+      }
+    },
+    "methodological": {
+      "n": 5,
+      "v2": {
+        "mean_judge_score": 3.8,
+        "accept_rate": 1.0
+      },
+      "v3": {
+        "mean_judge_score": 3.0,
+        "accept_rate": 0.6
+      },
+      "delta": {
+        "mean_judge_score": -0.8,
+        "accept_rate": -0.4
+      }
+    },
+    "attribution": {
+      "n": 5,
+      "v2": {
+        "mean_judge_score": 3.6,
+        "accept_rate": 0.8
+      },
+      "v3": {
+        "mean_judge_score": 1.8,
+        "accept_rate": 0.2
+      },
+      "delta": {
+        "mean_judge_score": -1.8,
+        "accept_rate": -0.6
+      }
+    },
+    "numerical": {
+      "n": 5,
+      "v2": {
+        "mean_judge_score": 2.4,
+        "accept_rate": 0.4
+      },
+      "v3": {
+        "mean_judge_score": 3.4,
+        "accept_rate": 0.6
+      },
+      "delta": {
+        "mean_judge_score": 1.0,
+        "accept_rate": 0.2
+      }
+    },
+    "out_of_context": {
+      "n": 59,
+      "v2": {
+        "mean_judge_score": 2.136,
+        "accept_rate": 0.305
+      },
+      "v3": {
+        "mean_judge_score": 4.458,
+        "accept_rate": 0.864
+      },
+      "delta": {
+        "mean_judge_score": 2.322,
+        "accept_rate": 0.559
+      }
+    }
+  },
+  "format_note": "v1 uses 4-axis scoring (n=45). v2/v3 use unified LLM judge (n=84). Formats are incompatible \u2014 do not compare helpfulness vs judge_score directly.",
+  "efficiency_score": {
+    "v2": 0.674,
+    "v3": 0.837
+  }
+}

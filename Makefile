@@ -137,7 +137,7 @@ import sqlite3, pathlib; \
 db = pathlib.Path('data/cache.db'); \
 cx = sqlite3.connect(str(db)) if db.exists() else None; \
 cx and (cx.execute('PRAGMA wal_checkpoint(TRUNCATE)'), cx.close()); \
-print('WAL checkpointed:', db if db.exists() else '(no cache.db found — OK)') \
+print('WAL checkpointed:', db if db.exists() else '(no cache.db found - OK)') \
 "
 	@echo ""
 	@echo "Docker services use ./data/ bind mounts (no named volumes)."

@@ -1,5 +1,5 @@
-# ──────────────────────────────────────────────────────────
-# PaperPilot — full stack
+# ----------------------------------------------------------
+# PaperPilot - full stack
 #   - qdrant            (vector DB)
 #   - langfuse-web      (observability UI)
 #   - langfuse-worker   (langfuse async workers)
@@ -9,15 +9,15 @@
 #   - minio             (langfuse blob storage)
 #   - app               (chainlit + multi-agent + retrieval)
 #
-# Phase 1 — Drive-Agnostic Portability:
+# Phase 1 - Drive-Agnostic Portability:
 #   ALL state uses LOCAL BIND MOUNTS under ./data/.
-#   No Docker named volumes — copy the entire project directory
+#   No Docker named volumes - copy the entire project directory
 #   to any machine or external drive and state is fully preserved.
-# ──────────────────────────────────────────────────────────
+# ----------------------------------------------------------
 version: "3.8"
 
 services:
-  # ─── Vector DB ──────────────────────────────────────────
+  # --- Vector DB ------------------------------------------
   qdrant:
     image: qdrant/qdrant:v1.12.4
     container_name: paperpilot-qdrant
@@ -34,7 +34,7 @@ services:
       retries: 20
       start_period: 30s   # HDD startup can be slow; don't count failures yet
 
-  # ─── Langfuse infra ─────────────────────────────────────
+  # --- Langfuse infra -------------------------------------
   postgres:
     image: postgres:16-alpine
     container_name: paperpilot-postgres
@@ -61,7 +61,7 @@ services:
       CLICKHOUSE_PASSWORD: ${CLICKHOUSE_PASSWORD:-clickhouse}
       CLICKHOUSE_DB: default
     volumes:
-      - ch_data:/var/lib/clickhouse          # named volume — Windows bind mounts block utimes()
+      - ch_data:/var/lib/clickhouse          # named volume - Windows bind mounts block utimes()
       - ch_logs:/var/log/clickhouse-server
     healthcheck:
       test: ["CMD-SHELL", "clickhouse-client --user=${CLICKHOUSE_USER:-clickhouse} --password=${CLICKHOUSE_PASSWORD:-clickhouse} --query 'SELECT 1' || exit 1"]
@@ -78,7 +78,7 @@ services:
     volumes:
       - ./data/redis_data:/data
     healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
+      test: ["CMD", "redis-cli", "-a", "my-redis-password", "ping"]
       interval: 5s
       timeout: 5s
       retries: 10
@@ -205,7 +205,7 @@ services:
       LANGFUSE_INIT_USER_NAME: ${LANGFUSE_INIT_USER_NAME:-Admin}
       LANGFUSE_INIT_USER_PASSWORD: ${LANGFUSE_INIT_USER_PASSWORD:-PaperPilot2026!}
 
-  # ─── PaperPilot app ─────────────────────────────────────
+  # --- PaperPilot app -------------------------------------
   app:
     build:
       context: .
@@ -220,6 +220,10 @@ services:
       QDRANT_URL: http://qdrant:6333
       LANGFUSE_HOST: http://langfuse-web:3000
       PYTHONPATH: /app/src
+      CHAINLIT_AUTH_SECRET: paperpilot-jwt-secret-2026-internal
+      # Persist the reranker model (BAAI/bge-reranker-base ~280 MB) across
+      # container rebuilds via the bind-mounted data/ directory.
+      HF_HOME: /app/data/.hf_cache
     ports:
       - "8000:8000"
     volumes:
@@ -228,9 +232,11 @@ services:
       - ./public:/app/public
       - ./.chainlit:/app/.chainlit
       - ./chainlit.md:/app/chainlit.md
+      - chainlit_db:/app/chainlit_db   # Named volume: SQLite lives here (Linux FS, no Windows locking issues)
     command: ["chainlit", "run", "src/paperpilot/server/chainlit_app.py", "--host", "0.0.0.0", "--port", "8000", "--headless"]
 
 volumes:
-  pg_data:   # Named volume for Postgres — Windows bind mounts don't support POSIX chmod
-  ch_data:   # Named volume for ClickHouse — same reason (utimes() blocked on NTFS bind mounts)
+  pg_data:      # Named volume for Postgres - Windows bind mounts don't support POSIX chmod
+  ch_data:      # Named volume for ClickHouse - same reason (utimes() blocked on NTFS bind mounts)
   ch_logs:
+  chainlit_db:  # Named volume for Chainlit SQLite DB - Windows NTFS bind mounts break SQLite locking

@@ -17,7 +17,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ENV_FILE="$ROOT/.env"
 
-#  ANSI ─
+#  ANSI =
 B=$'\e[1m'   # bold
 R=$'\e[0m'   # reset
 C=$'\e[36m'  # cyan
@@ -26,7 +26,7 @@ Y=$'\e[33m'  # yellow
 D=$'\e[2m'   # dim
 RE=$'\e[31m' # red
 
-#  helpers ─
+#  helpers =
 die()  { echo "${RE}ΣΦΑΛΜΑ: $*${R}" >&2; exit 1; }
 ok()   { echo "${G}✓ $*${R}"; }
 info() { echo "${D}  $*${R}"; }
@@ -167,11 +167,11 @@ if [[ ! -d "$QDRANT_DIR" ]] || [[ -z "$(ls -A "$QDRANT_DIR" 2>/dev/null)" ]]; th
 fi
 
 #  Βήμα 1: Επιλογή παρόχου
-echo "${B} Βήμα 1: Επιλογή AI παρόχου ─${R}"
+echo "${B} Βήμα 1: Επιλογή AI παρόχου =${R}"
 echo ""
-echo "  1)  OpenAI   │ gpt-4.1-mini · text-embedding-3-small"
-echo "  2)  Google   │ gemini-2.0-flash · text-embedding-004"
-echo "  3)  Ollama   │ τοπικά μοντέλα (πρέπει να τρέχει στο host)"
+echo "  1)  OpenAI   | gpt-4.1-mini · text-embedding-3-small"
+echo "  2)  Google   | gemini-2.0-flash · text-embedding-004"
+echo "  3)  Ollama   | τοπικά μοντέλα (πρέπει να τρέχει στο host)"
 echo ""
 
 while true; do
@@ -187,7 +187,7 @@ done
 echo ""
 
 # ========= Βήμα 2: API Key / URL =========
-echo "${B} Βήμα 2: Credentials παρόχου ─${R}"
+echo "${B} Βήμα 2: Credentials παρόχου =${R}"
 echo ""
 
 case "$PROVIDER" in
@@ -287,14 +287,14 @@ COUNT=$(echo "$QDRANT_RESP" | grep -o '"name"' | wc -l)
 
 if [[ "$COUNT" -eq 0 ]]; then
     echo ""
-    echo "${Y}  ┌───────────────────────────────────────────────────────────┐${R}"
-    echo "${Y}  │  ΠΡΩΤΗ ΕΚΚΙΝΗΣΗ - χρειάζεται ingestion των papers         │${R}"
-    echo "${Y}  │                                                           │${R}"
-    echo "${Y}  │  Τρέξε σε νέο terminal:                                   │${R}"
-    echo "${Y}  │    docker compose exec app python -m paperpilot.ingest    │${R}"
-    echo "${Y}  │                                                           │${R}"
-    echo "${Y}  │  Διάρκεια: ~5-10 λεπτά (κατέβασμα + embedding 50 papers)  │${R}"
-    echo "${Y}  └───────────────────────────────────────────────────────────┘${R}"
+    echo "${Y}  +===========================================================+${R}"
+    echo "${Y}  |  ΠΡΩΤΗ ΕΚΚΙΝΗΣΗ - χρειάζεται ingestion των papers         |${R}"
+    echo "${Y}  |                                                           |${R}"
+    echo "${Y}  |  Τρέξε σε νέο terminal:                                   |${R}"
+    echo "${Y}  |    docker compose exec app python -m paperpilot.ingest    |${R}"
+    echo "${Y}  |                                                           |${R}"
+    echo "${Y}  |  Διάρκεια: ~5-10 λεπτά (κατέβασμα + embedding 50 papers)  |${R}"
+    echo "${Y}  +===========================================================+${R}"
 else
     ok "Έτοιμο! Qdrant: ${COUNT} collection(s) φορτωμένα - άνοιξε http://localhost:8000"
 fi

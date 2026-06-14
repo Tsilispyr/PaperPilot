@@ -31,7 +31,7 @@ class PaperMetadata(BaseModel):
 class Chunk(BaseModel):
     """One unit indexed in Qdrant.
 
-    Note: `id_` is a deterministic UUID-like string — used as the Qdrant point id.
+    Note: `id_` is a deterministic UUID-like string - used as the Qdrant point id.
     """
     id_: str
     paper_id: str

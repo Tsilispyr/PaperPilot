@@ -1,15 +1,15 @@
 """LLM-generate candidate golden questions from random chunks of indexed papers.
 
-Output: data/golden/candidates.jsonl — review by hand, keep the best 30+,
+Output: data/golden/candidates.jsonl - review by hand, keep the best 30+,
 save the curated subset as data/golden/golden_set.jsonl.
 
 Question categories (must hit all 6):
   - definitional       (What is HyDE?)
-  - comparative        (RAGAS vs RAGChecker — what's different?)
+  - comparative        (RAGAS vs RAGChecker - what's different?)
   - methodological     (How does ReAct combine reasoning and acting?)
   - attribution        (Which paper proposed Self-RAG?)
   - numerical          (What MMLU score did GPT-4 achieve?)
-  - out_of_context     (negative — answer should be 'not in corpus')
+  - out_of_context     (negative - answer should be 'not in corpus')
 """
 from __future__ import annotations
 
@@ -44,10 +44,10 @@ Return strict JSON only, no markdown, with keys:
 
 Hard rules:
 - For 'numerical': the answer must include a specific number (score, %, hyperparameter, dataset size).
-- For 'out_of_context': the question must be plausibly NLP-related but unanswerable from this excerpt — and ideally not from the corpus at all.
+- For 'out_of_context': the question must be plausibly NLP-related but unanswerable from this excerpt - and ideally not from the corpus at all.
 - For 'attribution': the question must ask 'which paper / who proposed X' and X must be a named technique/model/metric.
-- Keep questions self-contained (don't say 'in this paper' — name the technique/model directly).
-- Keep expected_answer short (1–3 sentences max).
+- Keep questions self-contained (don't say 'in this paper' - name the technique/model directly).
+- Keep expected_answer short (1-3 sentences max).
 
 Excerpt:
 \"\"\"
@@ -74,7 +74,7 @@ def generate_candidates(n_candidates: int = 50, seed: int = 7) -> int:
             if c.section_type in ("abstract", "method", "results", "experiments", "introduction"):
                 pool.append((meta, c))
     if not pool:
-        raise RuntimeError("Empty chunk pool — no usable sections found.")
+        raise RuntimeError("Empty chunk pool - no usable sections found.")
     rng.shuffle(pool)
 
     client = _client()
