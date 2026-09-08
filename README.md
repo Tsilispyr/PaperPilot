@@ -2,11 +2,8 @@
 
 > Agentic RAG over NLP / LLM / RAG / Agents research papers.
 
-Course project for CSIS132 - Εφαρμογές Επιστήμης Δεδομένων & Τεχνητής Νοημοσύνης.
+Εφαρμογές Επιστήμης Δεδομένων & Τεχνητής Νοημοσύνης.
 
-| |
-|---|
-| Σπυρίδων Τσιλιμπώκος |
 
 PaperPilot is a domain-specialised retrieval-augmented agent. Ask it anything about recent NLP/LLM/RAG/agentic-systems research and it returns grounded, cited answers from a curated corpus of ~100 ArXiv papers (2020-2026). When the corpus does not cover a topic it falls back to live ArXiv search.
 
